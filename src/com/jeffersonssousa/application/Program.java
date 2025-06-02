@@ -1,33 +1,33 @@
 package com.jeffersonssousa.application;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.time.Instant;
+import java.time.LocalDate;
 
-import com.jeffersonssousa.config.connection.DBConnection;
+import com.jeffersonssousa.model.entities.Account;
+import com.jeffersonssousa.model.entities.Client;
+import com.jeffersonssousa.model.entities.Transaction;
+import com.jeffersonssousa.model.enums.TypeAccount;
+import com.jeffersonssousa.model.enums.TypeTransaction;
 
 public class Program {
-	public static void main(String[] args) throws SQLException {
+	public static void main(String[] args) {
 
-		System.out.println("Test Connection...");
-		Connection conn = DBConnection.getConnection();
-		System.out.println("Successful Connection");
+		Client client1 = new Client(null, "Lewis", "Hamilton", "125.956.329-15", "lewis@gmail.com",
+				LocalDate.parse("1983-05-11"));
 
+		Account ac1 = new Account(null, 2161, "1234567", 5000.0, TypeAccount.CORRENTE, client1);
+
+		Transaction tran = new Transaction(null, 500.0, Instant.now(), ac1, ac1, TypeTransaction.TRANSFERIR);
+
+		System.out.println("====PRINT CLIENTE");
+		System.out.println(client1);
 		System.out.println();
-		Statement st = conn.createStatement();
-		ResultSet rs = st.executeQuery("SELECT * FROM tb_type_access");
-
-		while (rs.next()) {
-			System.out.println("Access: " + rs.getString("name"));
-		}
-
-		DBConnection.closeConnection();
-		DBConnection.closeResultSet(rs);
-		DBConnection.closeStatement(st);
-
+		System.out.println("====PRINT CONTA");
+		System.out.println(ac1);
 		System.out.println();
-		System.out.println("Close Connection...");
+		System.out.println("====Transaction=====");
+		System.out.println(tran);
+		System.out.println();
 
 	}
 }

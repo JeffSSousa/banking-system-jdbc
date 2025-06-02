@@ -1,4 +1,4 @@
-package com.jeffersonssousa.model.entities;
+package com.jeffersonssousa.model.enums;
 
 public enum TypeAccount {
 	

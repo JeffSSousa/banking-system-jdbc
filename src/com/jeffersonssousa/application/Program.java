@@ -16,7 +16,7 @@ public class Program {
 
 	     Client newClient = new Client(null, "Fulano", "Da Silva", "487.896.526-96", "fulano@gmail.com", LocalDate.parse("2024-10-24"));
 
-	     client.insert(newClient);
+	     client.delete(9);
 	     
 		
 		DBConnection.closeConnection();

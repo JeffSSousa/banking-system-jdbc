@@ -77,8 +77,21 @@ public class ClientRepository implements BaseRepository<Client> {
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
-
+		String sql = "DELETE FROM tb_client "
+				     + "WHERE id = ?";
+		
+		try(PreparedStatement st = conn.prepareStatement(sql)){
+			st.setInt(1, id);
+			
+			int rowsAffacted = st.executeUpdate();
+			
+			if(rowsAffacted == 0) {
+				throw new DatabaseException("Nenhum cliente com o ID: " + id + " foi encontrado para ser deletado do banco de dados");
+			}
+			
+		} catch(SQLException e) {
+			throw new DatabaseException("Erro ao deletar um cliente do banco de dados: " + e.getMessage());
+		}
 	}
 
 	

@@ -30,6 +30,8 @@ public class ClientRepository implements BaseRepository<Client> {
 		return obj;
 	}
 
+	
+	
 	@Override
 	public void insert(Client obj) {
 	     String sql = "INSERT INTO tb_client "
@@ -61,16 +63,17 @@ public class ClientRepository implements BaseRepository<Client> {
 	     } catch (SQLException e) {
 	    	   throw new DatabaseException("Erro ao inserir um Cliente: " + e.getMessage());
 	     }
-	     
-	     
-
 	}
+	
+	
 
 	@Override
 	public void update(Client obj) {
 		// TODO Auto-generated method stub
 
 	}
+	
+	
 
 	@Override
 	public void delete(Integer id) {
@@ -78,6 +81,8 @@ public class ClientRepository implements BaseRepository<Client> {
 
 	}
 
+	
+	
 	@Override
 	public Client findById(Integer id) {
 		String sql = "SELECT * FROM system_bank.tb_client" 
@@ -99,6 +104,8 @@ public class ClientRepository implements BaseRepository<Client> {
 		}
 	}
 
+	
+	
 	@Override
 	public List<Client> findAll() {
 		List<Client> list = new ArrayList<Client>();

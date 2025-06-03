@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jeffersonssousa.config.connection.DBConnection;
 import com.jeffersonssousa.config.entities.DatabaseException;
 import com.jeffersonssousa.model.entities.Client;
 
@@ -59,13 +58,10 @@ public class ClientRepository implements BaseRepository<Client> {
 	public List<Client> findAll() {
 		List<Client> list = new ArrayList<Client>();
 		
-		PreparedStatement st = null;
-		ResultSet rs = null;
+		String sql = "SELECT * FROM tb_client";
 		
-		try {
-			st = conn.prepareStatement("SELECT * FROM tb_client");
-			
-			rs = st.executeQuery();
+		try (PreparedStatement st = conn.prepareStatement(sql);
+			 ResultSet rs = st.executeQuery()){
 			
 			while(rs.next()) {
 				list.add(instantiateClient(rs));
@@ -73,9 +69,6 @@ public class ClientRepository implements BaseRepository<Client> {
 			
 		} catch (SQLException e) {
 			throw new DatabaseException(e.getMessage());
-		}finally {
-			DBConnection.closeResultSet(rs);
-			DBConnection.closeStatement(st);
 		}
 		return list;
 	}

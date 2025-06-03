@@ -14,10 +14,9 @@ public class Program {
 		ClientRepository client = new ClientRepository(conn);
 		
 
-	     Client newClient = new Client(null, "Fulano", "Da Silva", "487.896.526-96", "fulano@gmail.com", LocalDate.parse("2024-10-24"));
+	     Client newClient = new Client(11, "Fulano", "Da Silva", "487.896.526-96", "fulano@gmail.com", LocalDate.parse("2024-10-24"));
 
-	     client.delete(9);
-	     
+	     client.update(newClient);
 		
 		DBConnection.closeConnection();
 

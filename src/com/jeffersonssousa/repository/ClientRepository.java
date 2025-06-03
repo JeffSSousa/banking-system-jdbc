@@ -69,8 +69,28 @@ public class ClientRepository implements BaseRepository<Client> {
 
 	@Override
 	public void update(Client obj) {
-		// TODO Auto-generated method stub
+		String sql = "UPDATE tb_client"
+				   + " SET first_name = ?, last_name = ?, cpf = ?, email = ?, birth_date = ?"
+				   + " WHERE id = ?";
 
+		try(PreparedStatement st = conn.prepareStatement(sql)){
+			st.setString(1, obj.getFirstName());
+			st.setString(2, obj.getLastName());
+			st.setString(3, obj.getCpf());
+			st.setString(4, obj.getEmail());
+			st.setDate(5, java.sql.Date.valueOf(obj.getBirthDate()));
+			st.setInt(6, obj.getId());
+			
+			st.executeUpdate();
+			
+			int rowsAffected = st.executeUpdate();
+			if (rowsAffected == 0) {
+			    throw new DatabaseException("Nenhum cliente com ID: " + obj.getId() + " foi encontrado para atualização.");
+			}
+			
+		}catch (SQLException e) {
+			throw new DatabaseException("Erro ao atualizar dados do Cliente: " + e.getMessage());
+		}
 	}
 	
 	

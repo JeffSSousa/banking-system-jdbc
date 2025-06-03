@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jeffersonssousa.config.entities.DatabaseException;
+import com.jeffersonssousa.config.exceptions.DatabaseException;
 import com.jeffersonssousa.model.entities.Client;
 
 public class ClientRepository implements BaseRepository<Client> {

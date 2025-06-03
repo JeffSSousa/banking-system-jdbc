@@ -9,8 +9,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-import com.jeffersonssousa.config.entities.DatabaseException;
-import com.jeffersonssousa.config.entities.NotFoundPropertiesException;
+import com.jeffersonssousa.config.exceptions.DatabaseException;
+import com.jeffersonssousa.config.exceptions.NotFoundPropertiesException;
 
 public class DBConnection {
 

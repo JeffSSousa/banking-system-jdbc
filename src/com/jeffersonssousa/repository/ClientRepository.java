@@ -42,7 +42,7 @@ public class ClientRepository implements BaseRepository<Client> {
 	}
 
 	@Override
-	public void delete(Client obj) {
+	public void delete(Integer id) {
 		// TODO Auto-generated method stub
 
 	}

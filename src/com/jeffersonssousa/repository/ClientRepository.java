@@ -17,9 +17,8 @@ public class ClientRepository implements BaseRepository<Client> {
 	public ClientRepository(Connection conn) {
 		this.conn = conn;
 	}
-	
-	
-	private Client instantiateClient(ResultSet rs) throws SQLException{
+
+	private Client instantiateClient(ResultSet rs) throws SQLException {
 		Client obj = new Client();
 		obj.setId(rs.getInt("id"));
 		obj.setFirstName(rs.getString("first_name"));
@@ -49,24 +48,39 @@ public class ClientRepository implements BaseRepository<Client> {
 	}
 
 	@Override
-	public Client findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Client findById(Integer id) {
+		String sql = "SELECT * FROM system_bank.tb_client" 
+	                 + " WHERE id = ?";
+
+		try (PreparedStatement st = conn.prepareStatement(sql)) {
+			st.setInt(1, id);
+
+			try (ResultSet rs = st.executeQuery()) {
+				if (rs.next()) {
+					return instantiateClient(rs);
+				} else {
+					throw new DatabaseException("Cliente do ID: " + id +" não foi encontrado no Banco de Dados!!");
+				}
+			}
+
+		} catch (SQLException e) {
+			throw new DatabaseException("Erro ao procurar cliente por Id: " + e.getMessage());
+		}
 	}
 
 	@Override
 	public List<Client> findAll() {
 		List<Client> list = new ArrayList<Client>();
-		
+
 		String sql = "SELECT * FROM tb_client";
-		
-		try (PreparedStatement st = conn.prepareStatement(sql);
-			 ResultSet rs = st.executeQuery()){
-			
-			while(rs.next()) {
+
+		try (PreparedStatement st = conn.prepareStatement(sql); 
+			 ResultSet rs = st.executeQuery()) {
+
+			while (rs.next()) {
 				list.add(instantiateClient(rs));
 			}
-			
+
 		} catch (SQLException e) {
 			throw new DatabaseException(e.getMessage());
 		}

@@ -7,6 +7,6 @@ public interface BaseRepository<T> {
 	void insert(T obj);
 	void update(T obj);
 	void delete(T obj);
-	T findById (Long id);
+	T findById (Integer id);
 	List<T> findAll();
 }

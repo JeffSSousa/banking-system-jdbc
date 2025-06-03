@@ -9,9 +9,9 @@ public class Program {
 	public static void main(String[] args) {
 
 		Connection conn = DBConnection.getConnection();
-		ClientRepository findall = new ClientRepository(conn);
+		ClientRepository client = new ClientRepository(conn);
 		
-		findall.findAll().forEach(System.out::println);
+		System.out.println(client.findById(2));
 		
 		DBConnection.closeConnection();
 

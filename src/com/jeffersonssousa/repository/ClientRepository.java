@@ -25,7 +25,7 @@ public class ClientRepository implements BaseRepository<Client> {
 		obj.setFirstName(rs.getString("first_name"));
 		obj.setLastName(rs.getString("last_name"));
 		obj.setCpf(rs.getString("cpf"));
-		obj.setEmail("email");
+		obj.setEmail(rs.getString("email"));
 		obj.setBirthDate(rs.getDate("birth_date").toLocalDate());
 		return obj;
 	}
@@ -60,6 +60,8 @@ public class ClientRepository implements BaseRepository<Client> {
 	    		 throw new DatabaseException("Nenhuma linha foi inserida");
 	    	 }
 	    	 
+	    	 System.out.println("Cliente Inserido no banco com Sucesso");
+	    	 
 	     } catch (SQLException e) {
 	    	   throw new DatabaseException("Erro ao inserir um Cliente: " + e.getMessage());
 	     }
@@ -81,12 +83,12 @@ public class ClientRepository implements BaseRepository<Client> {
 			st.setDate(5, java.sql.Date.valueOf(obj.getBirthDate()));
 			st.setInt(6, obj.getId());
 			
-			st.executeUpdate();
-			
 			int rowsAffected = st.executeUpdate();
 			if (rowsAffected == 0) {
 			    throw new DatabaseException("Nenhum cliente com ID: " + obj.getId() + " foi encontrado para atualização.");
 			}
+			
+			System.out.println("Cliente atualizado com sucesso");
 			
 		}catch (SQLException e) {
 			throw new DatabaseException("Erro ao atualizar dados do Cliente: " + e.getMessage());
@@ -108,6 +110,8 @@ public class ClientRepository implements BaseRepository<Client> {
 			if(rowsAffacted == 0) {
 				throw new DatabaseException("Nenhum cliente com o ID: " + id + " foi encontrado para ser deletado do banco de dados");
 			}
+			
+			System.out.println("Cliente deletado com sucesso");
 			
 		} catch(SQLException e) {
 			throw new DatabaseException("Erro ao deletar um cliente do banco de dados: " + e.getMessage());

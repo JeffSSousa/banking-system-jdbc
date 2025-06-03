@@ -18,6 +18,18 @@ public class ClientRepository implements BaseRepository<Client> {
 	public ClientRepository(Connection conn) {
 		this.conn = conn;
 	}
+	
+	
+	private Client instantiateClient(ResultSet rs) throws SQLException{
+		Client obj = new Client();
+		obj.setId(rs.getInt("id"));
+		obj.setFirstName(rs.getString("first_name"));
+		obj.setLastName(rs.getString("last_name"));
+		obj.setCpf(rs.getString("cpf"));
+		obj.setEmail("email");
+		obj.setBirthDate(rs.getDate("birth_date").toLocalDate());
+		return obj;
+	}
 
 	@Override
 	public void insert(Client obj) {
@@ -56,7 +68,7 @@ public class ClientRepository implements BaseRepository<Client> {
 			rs = st.executeQuery();
 			
 			while(rs.next()) {
-				list.add(new Client(rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("cpf"), rs.getString("email"), rs.getDate("birth_date").toLocalDate()));
+				list.add(instantiateClient(rs));
 			}
 			
 		} catch (SQLException e) {

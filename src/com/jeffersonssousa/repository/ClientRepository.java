@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +32,37 @@ public class ClientRepository implements BaseRepository<Client> {
 
 	@Override
 	public void insert(Client obj) {
-		// TODO Auto-generated method stub
+	     String sql = "INSERT INTO tb_client "
+	     		      + "(first_name, last_name, cpf, email, birth_date)"
+	    		      + "values"
+	    		      + "( ?, ?, ?, ?, ?)";
+	     
+	     try(PreparedStatement st = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
+	    	 st.setString(1, obj.getFirstName());
+	    	 st.setString(2, obj.getLastName());
+	    	 st.setString(3, obj.getCpf());
+	    	 st.setString(4, obj.getEmail());
+	    	 
+	    	 st.setDate(5, java.sql.Date.valueOf(obj.getBirthDate()));
+	    	 
+	    	 int rowsAffected = st.executeUpdate();
+	    	 
+	    	 if(rowsAffected > 0) {
+	    		 try(ResultSet rs = st.getGeneratedKeys()){
+	    			 if(rs.next()) {
+	    				 int id = rs.getInt(1);
+	    				 obj.setId(id);
+	    			 }
+	    		 }
+	    	 } else {
+	    		 throw new DatabaseException("Nenhuma linha foi inserida");
+	    	 }
+	    	 
+	     } catch (SQLException e) {
+	    	   throw new DatabaseException("Erro ao inserir um Cliente: " + e.getMessage());
+	     }
+	     
+	     
 
 	}
 

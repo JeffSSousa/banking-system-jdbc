@@ -1,23 +1,18 @@
 package com.jeffersonssousa.application;
 
-import java.time.Instant;
+import java.util.Scanner;
 
-import com.jeffersonssousa.model.entities.Account;
-import com.jeffersonssousa.model.entities.Transaction;
-import com.jeffersonssousa.model.entities.transactions.BankTransfer;
-import com.jeffersonssousa.model.enums.TypeTransaction;
+import com.jeffersonssousa.view.menu.HomeMenuView;
 
 public class Program {
 	public static void main(String[] args) {
 
-		Transaction trans1 ;
-	     
-		trans1 = new BankTransfer(null, 7999.9, Instant.now(), new Account(), new Account(), TypeTransaction.TRANSFERIR);
-
-		trans1.applyRate();
-
-		System.out.println(trans1.validate());
-		System.out.println(trans1.getTax());
-		System.out.println(trans1.getAmount());
+		Scanner  sc = new Scanner(System.in);
+		
+		int option = HomeMenuView.showHomeMenu(sc);
+		
+		System.out.println(option);
+		
+		sc.close();
 	}
 }

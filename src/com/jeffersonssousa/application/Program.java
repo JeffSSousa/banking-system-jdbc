@@ -1,24 +1,23 @@
 package com.jeffersonssousa.application;
 
-import java.sql.Connection;
-import java.time.LocalDate;
+import java.time.Instant;
 
-import com.jeffersonssousa.config.connection.DBConnection;
-import com.jeffersonssousa.model.entities.Client;
-import com.jeffersonssousa.repository.ClientRepository;
+import com.jeffersonssousa.model.entities.Account;
+import com.jeffersonssousa.model.entities.Transaction;
+import com.jeffersonssousa.model.entities.transactions.BankTransfer;
+import com.jeffersonssousa.model.enums.TypeTransaction;
 
 public class Program {
 	public static void main(String[] args) {
 
-		Connection conn = DBConnection.getConnection();
-		ClientRepository client = new ClientRepository(conn);
-		
+		Transaction trans1 ;
+	     
+		trans1 = new BankTransfer(null, 4999.9, Instant.now(), new Account(), new Account(), TypeTransaction.TRANSFERIR);
 
-	     Client newClient = new Client(11, "Fulano", "Da Silva", "487.896.526-96", "fulano@gmail.com", LocalDate.parse("2024-10-24"));
+		trans1.applyRate();
 
-	     client.update(newClient);
-		
-		DBConnection.closeConnection();
-
+		System.out.println(trans1.validate());
+		System.out.println(trans1.getTax());
+		System.out.println(trans1.getAmount());
 	}
 }

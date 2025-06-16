@@ -6,13 +6,15 @@ import java.util.Objects;
 import com.jeffersonssousa.model.enums.TypeTransaction;
 
 public abstract class Transaction {
-	private Integer id;
-	private Double amount;
-	private Instant transactionDate;
+	protected Integer id;
+	protected Double amount;
+	protected Instant transactionDate;
 
-	private Account sender;
-	private Account receiver;
-	private TypeTransaction typeTransaction;
+	protected Account sender;
+	protected Account receiver;
+	protected TypeTransaction typeTransaction;
+
+	protected Double tax;
 
 	public Transaction() {
 	}
@@ -25,6 +27,7 @@ public abstract class Transaction {
 		this.sender = sender;
 		this.receiver = receiver;
 		this.typeTransaction = typeTransaction;
+		calculateRate();
 	}
 
 	public Integer getId() {
@@ -75,6 +78,10 @@ public abstract class Transaction {
 		this.typeTransaction = typeTransaction;
 	}
 
+	public Double getTax() {
+		return tax;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -97,8 +104,12 @@ public abstract class Transaction {
 		return "Transaction [id=" + id + ", amount=" + amount + ", transactionDate=" + transactionDate + ", sender="
 				+ sender + ", receiver=" + receiver + ", typeTransaction=" + typeTransaction + "]";
 	}
-	
-	
+
 	public abstract boolean validate();
-	public abstract void calculateRate();
+
+	public abstract Double calculateRate();
+
+	public void applyRate() {
+		this.tax = calculateRate();
+	}
 }

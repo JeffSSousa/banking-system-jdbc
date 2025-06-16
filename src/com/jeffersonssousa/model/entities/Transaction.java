@@ -98,4 +98,7 @@ public abstract class Transaction {
 				+ sender + ", receiver=" + receiver + ", typeTransaction=" + typeTransaction + "]";
 	}
 	
+	
+	public abstract boolean validate();
+	public abstract void calculateRate();
 }

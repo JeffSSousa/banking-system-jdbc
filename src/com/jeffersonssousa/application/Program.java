@@ -12,7 +12,7 @@ public class Program {
 
 		Transaction trans1 ;
 	     
-		trans1 = new BankTransfer(null, 4999.9, Instant.now(), new Account(), new Account(), TypeTransaction.TRANSFERIR);
+		trans1 = new BankTransfer(null, 7999.9, Instant.now(), new Account(), new Account(), TypeTransaction.TRANSFERIR);
 
 		trans1.applyRate();
 

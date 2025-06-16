@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import com.jeffersonssousa.model.enums.TypeTransaction;
 
-public class Transaction {
+public abstract class Transaction {
 	private Integer id;
 	private Double amount;
 	private Instant transactionDate;
@@ -97,7 +97,5 @@ public class Transaction {
 		return "Transaction [id=" + id + ", amount=" + amount + ", transactionDate=" + transactionDate + ", sender="
 				+ sender + ", receiver=" + receiver + ", typeTransaction=" + typeTransaction + "]";
 	}
-
-	
 	
 }

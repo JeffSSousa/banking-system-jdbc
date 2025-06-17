@@ -1,4 +1,4 @@
-package com.jeffersonssousa.repository;
+package com.jeffersonssousa.repository.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,6 +13,7 @@ import com.jeffersonssousa.model.entities.Account;
 import com.jeffersonssousa.model.entities.Transaction;
 import com.jeffersonssousa.model.enums.TypeTransaction;
 import com.jeffersonssousa.model.factory.TransactionFactory;
+import com.jeffersonssousa.repository.BaseRepository;
 
 public class TransactionRepository implements BaseRepository<Transaction> {
 

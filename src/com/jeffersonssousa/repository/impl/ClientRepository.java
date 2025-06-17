@@ -1,4 +1,4 @@
-package com.jeffersonssousa.repository;
+package com.jeffersonssousa.repository.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.jeffersonssousa.config.exceptions.DatabaseException;
 import com.jeffersonssousa.model.entities.Client;
+import com.jeffersonssousa.repository.BaseRepository;
 
 public class ClientRepository implements BaseRepository<Client> {
 

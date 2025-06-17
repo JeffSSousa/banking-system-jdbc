@@ -3,6 +3,7 @@ package com.jeffersonssousa.application;
 import java.util.Scanner;
 
 import com.jeffersonssousa.view.menu.HomeMenuView;
+import com.jeffersonssousa.view.util.Screen;
 
 public class Program {
 	public static void main(String[] args) {
@@ -12,6 +13,7 @@ public class Program {
 		int option = HomeMenuView.showHomeMenu(sc);
 		
 		System.out.println(option);
+		Screen.clearScreen();
 		
 		sc.close();
 	}

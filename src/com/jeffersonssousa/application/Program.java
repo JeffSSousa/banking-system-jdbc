@@ -6,20 +6,17 @@ import com.jeffersonssousa.repository.DaoFactory;
 import com.jeffersonssousa.view.menu.AdministratorView;
 import com.jeffersonssousa.view.menu.ClientMenuView;
 import com.jeffersonssousa.view.menu.HomeMenuView;
+import com.jeffersonssousa.view.menu.client.AccountDetailsView;
 import com.jeffersonssousa.view.util.Screen;
 
 public class Program {
 	public static void main(String[] args) {
-
-		System.out.println("Account");
-		DaoFactory.createAccountDao().findAll().forEach(System.out::println);
 		
-		System.out.println("Client");
-		DaoFactory.createClientDao().findAll().forEach(System.out::println);
-		
-		System.out.println("Transaction");
-		DaoFactory.createTransactionDao().findAll().forEach(System.out::println);
+		Scanner sc = new Scanner(System.in);
 
+		AccountDetailsView.showDetails(sc);
+
+		sc.close();
 	}
 
 	public static void testScreen() {

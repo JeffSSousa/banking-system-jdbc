@@ -12,7 +12,7 @@ public class ClientMenuView {
 		System.out.println("4. Sacar valor");
 		System.out.println("5. Transferir para outra conta");
 		System.out.println("6. Ver extrato");
-		System.out.println("7. Sair");
+		System.out.println("0. Sair");
 
 		return sc.nextInt();
 	}

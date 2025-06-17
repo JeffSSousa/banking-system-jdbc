@@ -2,33 +2,28 @@ package com.jeffersonssousa.model.entities;
 
 import java.util.Objects;
 
-import com.jeffersonssousa.model.enums.TypeAccount;
-
 public class Account {
 	private Integer id;
 	private Integer accountNumber;
 	private String password;
 	private Double balance;
 
-	private TypeAccount typeAccount;
-	private Client client;
+	private Integer typeAccountId;
+	private Integer clientId;
 
 	public Account() {
 	}
 
-	public Account(Integer id, Integer accountNumber, String password, Double balance, TypeAccount typeAccount,
-			Client client) {
+	public Account(Integer id, Integer accountNumber, String password, Double balance, Integer typeAccountId,
+			Integer clientId) {
 		this.id = id;
 		this.accountNumber = accountNumber;
 		this.password = password;
 		this.balance = balance;
-		this.typeAccount = typeAccount;
-		this.client = client;
+		this.typeAccountId = typeAccountId;
+		this.clientId = clientId;
 	}
 
-	
-	
-	
 	public Integer getId() {
 		return id;
 	}
@@ -61,20 +56,20 @@ public class Account {
 		this.balance = balance;
 	}
 
-	public TypeAccount getTypeAccount() {
-		return typeAccount;
+	public Integer getTypeAccountId() {
+		return typeAccountId;
 	}
 
-	public void setTypeAccount(TypeAccount typeAccount) {
-		this.typeAccount = typeAccount;
+	public void setTypeAccountId(Integer typeAccountId) {
+		this.typeAccountId = typeAccountId;
 	}
 
-	public Client getClient() {
-		return client;
+	public Integer getClientId() {
+		return clientId;
 	}
 
-	public void setClient(Client client) {
-		this.client = client;
+	public void setClientId(Integer clientId) {
+		this.clientId = clientId;
 	}
 
 	@Override
@@ -97,9 +92,7 @@ public class Account {
 	@Override
 	public String toString() {
 		return "Account [id=" + id + ", accountNumber=" + accountNumber + ", password=" + password + ", balance="
-				+ balance + ", typeAccount=" + typeAccount + ", client=" + client.getCpf() + "]";
+				+ balance + ", typeAccountId=" + typeAccountId + ", clientId=" + clientId + "]";
 	}
 
-	
-	
 }

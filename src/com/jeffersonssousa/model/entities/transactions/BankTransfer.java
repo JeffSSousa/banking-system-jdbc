@@ -5,15 +5,13 @@ import java.time.Instant;
 import com.jeffersonssousa.model.entities.Account;
 import com.jeffersonssousa.model.entities.Transaction;
 import com.jeffersonssousa.model.entities.transactions.exception.TransactionErrorException;
-import com.jeffersonssousa.model.enums.TypeTransaction;
 
 public class BankTransfer extends Transaction {
 
 	public BankTransfer(Integer id, Double amount, Instant transactionDate, Account sender, Account receiver,
-			TypeTransaction typeTransaction) {
+			Integer typeTransaction) {
 		super(id, amount, transactionDate, sender, receiver, typeTransaction);
 	}
-
 
 	@Override
 	public boolean validate() {

@@ -3,8 +3,6 @@ package com.jeffersonssousa.model.entities;
 import java.time.Instant;
 import java.util.Objects;
 
-import com.jeffersonssousa.model.enums.TypeTransaction;
-
 public abstract class Transaction {
 	protected Integer id;
 	protected Double amount;
@@ -12,7 +10,7 @@ public abstract class Transaction {
 
 	protected Account sender;
 	protected Account receiver;
-	protected TypeTransaction typeTransaction;
+	protected Integer typeTransaction;
 
 	protected Double tax;
 
@@ -20,7 +18,7 @@ public abstract class Transaction {
 	}
 
 	public Transaction(Integer id, Double amount, Instant transactionDate, Account sender, Account receiver,
-			TypeTransaction typeTransaction) {
+			Integer typeTransaction) {
 		this.id = id;
 		this.amount = amount;
 		this.transactionDate = transactionDate;
@@ -70,11 +68,11 @@ public abstract class Transaction {
 		this.receiver = receiver;
 	}
 
-	public TypeTransaction getTypeTransaction() {
+	public Integer getTypeTransaction() {
 		return typeTransaction;
 	}
 
-	public void setTypeTransaction(TypeTransaction typeTransaction) {
+	public void setTypeTransaction(Integer typeTransaction) {
 		this.typeTransaction = typeTransaction;
 	}
 

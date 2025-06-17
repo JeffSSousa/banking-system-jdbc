@@ -2,14 +2,10 @@ package com.jeffersonssousa.application;
 
 import java.util.Scanner;
 
-import com.jeffersonssousa.repository.DaoFactory;
 import com.jeffersonssousa.view.menu.AdministratorView;
 import com.jeffersonssousa.view.menu.ClientMenuView;
 import com.jeffersonssousa.view.menu.HomeMenuView;
-import com.jeffersonssousa.view.menu.client.AccountDetailsView;
-import com.jeffersonssousa.view.menu.client.CheckBalance;
-import com.jeffersonssousa.view.menu.client.DepositValueView;
-import com.jeffersonssousa.view.menu.client.WithdrawValueView;
+import com.jeffersonssousa.view.menu.client.BankStatementView;
 import com.jeffersonssousa.view.util.Screen;
 
 public class Program {
@@ -17,7 +13,7 @@ public class Program {
 		
 		Scanner sc = new Scanner(System.in);
 
-		WithdrawValueView.amountWithdrawn(sc);
+		BankStatementView.showBankStatement(sc);
 
 		sc.close();
 	}

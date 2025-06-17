@@ -7,6 +7,7 @@ import com.jeffersonssousa.view.menu.AdministratorView;
 import com.jeffersonssousa.view.menu.ClientMenuView;
 import com.jeffersonssousa.view.menu.HomeMenuView;
 import com.jeffersonssousa.view.menu.client.AccountDetailsView;
+import com.jeffersonssousa.view.menu.client.CheckBalance;
 import com.jeffersonssousa.view.util.Screen;
 
 public class Program {
@@ -14,7 +15,7 @@ public class Program {
 		
 		Scanner sc = new Scanner(System.in);
 
-		AccountDetailsView.showDetails(sc);
+		CheckBalance.show(sc);
 
 		sc.close();
 	}

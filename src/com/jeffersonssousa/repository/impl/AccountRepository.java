@@ -127,5 +127,4 @@ public class AccountRepository implements BaseRepository<Account> {
 		}
 		return list;
 	}
-
 }

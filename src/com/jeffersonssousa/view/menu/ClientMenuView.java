@@ -32,13 +32,8 @@ public class ClientMenuView {
 
 		do {
 			Screen.clearScreen();
-
-			if (option > 6) {
-				System.out.println();
-				System.out.println("Opção selecionada inexistente, tente novamente!!!");
-				System.out.println();
-			}
-
+			Screen.notifyInvalidOption(6, option);
+			
 			option = showClientMenu(sc);
 
 			switch (option) {

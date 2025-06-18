@@ -1,5 +1,7 @@
 package com.jeffersonssousa.view.util;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Screen {
@@ -20,5 +22,10 @@ public class Screen {
 		if (option > limitOption || option < 0) {
 			System.out.println("\nOpção selecionada inexistente, tente novamente!!!\n");
 		}
+	}
+	
+	public static String formatLocalDate(LocalDate date) {
+		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		return date.format(fmt);
 	}
 }

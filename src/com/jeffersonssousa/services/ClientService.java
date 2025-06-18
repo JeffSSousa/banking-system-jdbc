@@ -5,7 +5,7 @@ import com.jeffersonssousa.repository.DaoFactory;
 
 public class ClientService {
 
-	public Client findClienttData(int id) {
+	public Client findClientData(int id) {
 		Client obj = DaoFactory.createClientDao().findById(id);
 		return obj;
 	}

@@ -12,7 +12,7 @@ public class WithdrawValueView {
 		System.out.println();
 		System.out.println("Novo saldo: R$ 5.150,75");
 		
-		return 0;
+		return sc.nextInt();
 	}
 
 }

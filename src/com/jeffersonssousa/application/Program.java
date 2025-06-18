@@ -5,17 +5,16 @@ import java.util.Scanner;
 import com.jeffersonssousa.view.menu.AdministratorView;
 import com.jeffersonssousa.view.menu.ClientMenuView;
 import com.jeffersonssousa.view.menu.HomeMenuView;
-import com.jeffersonssousa.view.menu.client.BankStatementView;
 import com.jeffersonssousa.view.util.Screen;
 
 public class Program {
 	public static void main(String[] args) {
-		
 		Scanner sc = new Scanner(System.in);
-
-		BankStatementView.showBankStatement(sc);
-
-		sc.close();
+		try {
+			ClientMenuView.startNavigation(sc);
+		} finally {
+			Screen.exitTheSystem(sc);
+		}
 	}
 
 	public static void testScreen() {

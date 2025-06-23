@@ -41,7 +41,7 @@ public class ClientMenuView {
 				AccountDetailsView.startNavigation(sc);;
 				break;
 			case 2:
-				CheckBalance.show(sc);
+				CheckBalance.startNavigation(sc);
 				break;
 			case 3:
 				DepositValueView.amountDeposited(sc);

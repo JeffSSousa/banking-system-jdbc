@@ -16,8 +16,8 @@ public class ClientMenuView {
 		System.out.println("=== MENU CLIENTE ===");
 		System.out.println("1. Ver dados da conta");
 		System.out.println("2. Consultar saldo");
-		System.out.println("3. Depositar valor");
-		System.out.println("4. Sacar valor");
+		System.out.println("3. Depositar valor (em desenvolvimento)");
+		System.out.println("4. Sacar valor (em desenvolvimento)");
 		System.out.println("5. Transferir para outra conta");
 		System.out.println("6. Ver extrato");
 		System.out.println("0. Sair da Conta");
@@ -44,10 +44,10 @@ public class ClientMenuView {
 				CheckBalance.startNavigation(sc);
 				break;
 			case 3:
-				DepositValueView.amountDeposited(sc);
+				DepositValueView.startNavigation(sc);;
 				break;
 			case 4:
-				WithdrawValueView.amountWithdrawn(sc);
+				WithdrawValueView.startNavigation(sc);;
 				break;
 			case 5:
 				TransferView.transferCompleted(sc);

@@ -2,6 +2,12 @@ package com.jeffersonssousa.view.menu;
 
 import java.util.Scanner;
 
+import com.jeffersonssousa.view.menu.adm.DeleteAccessView;
+import com.jeffersonssousa.view.menu.adm.FindAccessView;
+import com.jeffersonssousa.view.menu.adm.ListAccountsView;
+import com.jeffersonssousa.view.menu.adm.ListClientsView;
+import com.jeffersonssousa.view.util.Screen;
+
 public class AdministratorMenuView {
 
 	public static int showAdministratorMenu(Scanner sc) {
@@ -13,6 +19,33 @@ public class AdministratorMenuView {
 		System.out.println("5. Sair");
 
 		return sc.nextInt();
+	}
+	
+	public static void startNavigation(Scanner sc) {
+		int option = 0;
+
+		do {
+			Screen.clearScreen();
+			Screen.notifyInvalidOption(5, option);
+			
+			option = showAdministratorMenu(sc);
+
+			switch (option) {
+			case 1:
+				ListClientsView.showClients(sc);
+				break;
+			case 2:
+				ListAccountsView.showAccounts(sc);
+				break;
+			case 3:
+				DeleteAccessView.startNavigation(sc);
+				break;
+			case 4:
+				FindAccessView.startNavigation(sc);
+				break;
+			}
+
+		} while (option != 5);
 	}
 
 }

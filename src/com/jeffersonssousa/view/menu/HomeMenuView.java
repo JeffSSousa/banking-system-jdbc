@@ -9,7 +9,8 @@ import com.jeffersonssousa.view.util.Screen;
 public class HomeMenuView {
 
 	public static int showHomeMenu(Scanner sc) {
-		System.out.println("===== Banco Digital ======");
+		System.out.println("====== MENU CLIENTE =======");
+		System.out.println();
 		System.out.println("1. Acessar conta existente.");
 		System.out.println("2. Criar nova conta.");
 		System.out.println("3. Sair.");

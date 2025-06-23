@@ -17,9 +17,8 @@ public class ClientLoginView {
             try {
                 Screen.clearScreen();
 
-                System.out.println("===================================");
-                System.out.println("          LOGIN DO CLIENTE        ");
-                System.out.println("===================================");
+                
+                System.out.println("====== LOGIN DO CLIENTE ======");
                 System.out.println();
 
                 System.out.print("CPF: ");

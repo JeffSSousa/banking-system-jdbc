@@ -1,15 +1,17 @@
-package com.jeffersonssousa.view.menu.access;
+package com.jeffersonssousa.view.menu;
 
 import java.util.Scanner;
 
 import com.jeffersonssousa.view.util.Screen;
 
-public class SelectAccessView {
+public class StartView {
 	
 	public static int showHomeMenu(Scanner sc) {
-		System.out.println("===== Banco Digital ======");
-		System.out.println("1. Acessar conta existente.");
-		System.out.println("2. Criar nova conta.");
+		System.out.println("====== BEM VINDO AO CODEBANK =====");
+		System.out.println("=== Um Banco Digital para Você ===");
+		System.out.println();
+		System.out.println("1. Sou Cliente.");
+		System.out.println("2. Sou Colaborador.");
 		System.out.println("3. Sair.");
 		
 		System.out.println();
@@ -30,10 +32,10 @@ public class SelectAccessView {
 
 			switch (option) {
 			case 1:
-				ClientLoginView.startNavigation(sc);
+				HomeMenuView.startNavigation(sc);
 				break;
 			case 2:
-				RegistrationView.startNavigation(sc);
+				System.out.println("Menu Funcionario");
 				break;
 			}
 

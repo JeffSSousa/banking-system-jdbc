@@ -2,7 +2,7 @@ package com.jeffersonssousa.view.menu;
 
 import java.util.Scanner;
 
-public class AdministratorView {
+public class AdministratorMenuView {
 
 	public static int showAdministratorMenu(Scanner sc) {
 		System.out.println("=== MENU ADMINISTRADOR ===");

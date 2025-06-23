@@ -2,7 +2,7 @@ package com.jeffersonssousa.view.menu.adm;
 
 import java.util.Scanner;
 
-public class ListAccounts {
+public class ListAccountsView {
 	
 	public static int showAccounts(Scanner sc) {
 		

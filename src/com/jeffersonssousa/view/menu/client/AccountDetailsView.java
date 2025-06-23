@@ -22,7 +22,29 @@ public class AccountDetailsView {
 		System.out.println();
 		System.out.println("Numero da Conta: " + account.viewAccountdetails(1).getAccountNumber());
 		System.out.println("Tipo da Conta: " + TypeAccount.valueOf(account.viewAccountdetails(1).getTypeAccountId()));
+		
+		System.out.println();
+		Screen.showReturnToMenu("Cliente");
+		
 		return sc.nextInt();
+	}
+	
+	public static void startNavigation(Scanner sc) {
+		int option = 0;
+
+		do {
+			Screen.clearScreen();
+			Screen.notifyInvalidOption(1, option);
+
+			option = showDetails(sc);
+
+			switch (option) {
+			case 1:
+				Screen.showReturningToMenu();
+				break;
+			}
+
+		} while (option != 1);
 	}
 
 }

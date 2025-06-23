@@ -38,7 +38,7 @@ public class ClientMenuView {
 
 			switch (option) {
 			case 1:
-				AccountDetailsView.showDetails(sc);
+				AccountDetailsView.startNavigation(sc);;
 				break;
 			case 2:
 				CheckBalance.show(sc);

@@ -2,6 +2,10 @@ package com.jeffersonssousa.view.menu;
 
 import java.util.Scanner;
 
+import com.jeffersonssousa.view.menu.access.LoginView;
+import com.jeffersonssousa.view.menu.access.RegistrationView;
+import com.jeffersonssousa.view.util.Screen;
+
 public class HomeMenuView {
 
 	public static int showHomeMenu(Scanner sc) {
@@ -10,6 +14,31 @@ public class HomeMenuView {
 		System.out.println("2. Criar nova conta.");
 		System.out.println("3. Sair.");
 		
+		System.out.println();
+		System.out.print("Informe a opção desejada: ");
+		
 		return sc.nextInt();
+	}
+	
+	
+	public static void startNavigation(Scanner sc) {
+		int option = 0;
+
+		do {
+			Screen.clearScreen();
+			Screen.notifyInvalidOption(3, option);
+
+			option = showHomeMenu(sc);
+
+			switch (option) {
+			case 1:
+				LoginView.startNavigation(sc);
+				break;
+			case 2:
+				RegistrationView.startNavigation(sc);
+				break;
+			}
+
+		} while (option != 3);
 	}
 }

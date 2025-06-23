@@ -10,9 +10,10 @@ import java.util.List;
 
 import com.jeffersonssousa.config.exceptions.DatabaseException;
 import com.jeffersonssousa.model.entities.Account;
+import com.jeffersonssousa.repository.AccountRepository;
 import com.jeffersonssousa.repository.BaseRepository;
 
-public class AccountDaoJDBC implements BaseRepository<Account> {
+public class AccountDaoJDBC implements AccountRepository {
 
 	private Connection conn;
 
@@ -33,8 +34,8 @@ public class AccountDaoJDBC implements BaseRepository<Account> {
 
 	@Override
 	public void insert(Account obj) {
-		String sql = "INSERT INTO tb_account " + "(account_number, password, balance, type_account_id, tb_client_id)" + "values"
-				+ "( ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO tb_account " + "(account_number, password, balance, type_account_id, tb_client_id)"
+				+ "values" + "( ?, ?, ?, ?, ?)";
 
 		try (PreparedStatement st = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 			st.setInt(1, obj.getAccountNumber());
@@ -109,7 +110,26 @@ public class AccountDaoJDBC implements BaseRepository<Account> {
 		}
 	}
 
-	
+	@Override
+	public Account findByClientId(Integer id) {
+		String sql = "SELECT * FROM system_bank.tb_account" + " WHERE  tb_client_id = ?";
+
+		try (PreparedStatement st = conn.prepareStatement(sql)) {
+			st.setInt(1, id);
+
+			try (ResultSet rs = st.executeQuery()) {
+				if (rs.next()) {
+					return instantiateAccount(rs);
+				} else {
+					throw new DatabaseException("Conta do Cliente com o ID: " + id + " não foi encontrado no Banco de Dados!!");
+				}
+			}
+
+		} catch (SQLException e) {
+			throw new DatabaseException("Erro ao procurar cliente por id: " + e.getMessage());
+		}
+	}
+
 	@Override
 	public List<Account> findAll() {
 		List<Account> list = new ArrayList<>();
@@ -127,4 +147,5 @@ public class AccountDaoJDBC implements BaseRepository<Account> {
 		}
 		return list;
 	}
+
 }

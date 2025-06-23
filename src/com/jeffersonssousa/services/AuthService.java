@@ -18,7 +18,7 @@ public class AuthService {
 		Client client = authenticateCpf(cpf);
 		int clientId = client.getId();
 		
-		Account account = DaoFactory.createAccountDao().findById(clientId);
+		Account account = DaoFactory.createAccountDao().findByClientId(clientId);
 		if (account.getPassword().equals(password)) {
 			System.out.println("Login Bem-Sucedido");
 		return account;

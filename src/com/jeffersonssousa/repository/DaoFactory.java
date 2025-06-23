@@ -9,7 +9,7 @@ import com.jeffersonssousa.repository.impl.TransactionDaoJDBC;
 
 public class DaoFactory {
 
-	public static BaseRepository<Account> createAccountDao() {
+	public static AccountRepository createAccountDao() {
 		return new AccountDaoJDBC(DBConnection.getConnection());
 	}
 

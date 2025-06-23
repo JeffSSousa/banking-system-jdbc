@@ -12,9 +12,9 @@ public class Program {
 
 		AuthService service = new AuthService();
 		System.out.println(service.authenticateCpf("123.456.789-00"));
-		//Account acc = service.login(1, "Jef415");
+		Account acc = service.login("123.456.789-00", "Jef415");
 		
-		//System.out.println(acc);
+		System.out.println(acc);
 		
 		//testScreen();
 	}

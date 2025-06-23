@@ -2,8 +2,6 @@ package com.jeffersonssousa.application;
 
 import java.util.Scanner;
 
-import com.jeffersonssousa.model.entities.Account;
-import com.jeffersonssousa.services.AuthService;
 import com.jeffersonssousa.view.menu.HomeMenuView;
 import com.jeffersonssousa.view.util.Screen;
 

@@ -7,7 +7,7 @@ import com.jeffersonssousa.model.entities.Account;
 import com.jeffersonssousa.view.menu.ClientMenuView;
 import com.jeffersonssousa.view.util.Screen;
 
-public class LoginView {
+public class ClientLoginView {
 
 	public static void startNavigation(Scanner sc) {
         LoginController controller = new LoginController();

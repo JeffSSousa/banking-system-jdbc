@@ -1,13 +1,11 @@
-package com.jeffersonssousa.view.menu;
+package com.jeffersonssousa.view.menu.access;
 
 import java.util.Scanner;
 
-import com.jeffersonssousa.view.menu.access.ClientLoginView;
-import com.jeffersonssousa.view.menu.access.RegistrationView;
 import com.jeffersonssousa.view.util.Screen;
 
-public class HomeMenuView {
-
+public class SelectAccessView {
+	
 	public static int showHomeMenu(Scanner sc) {
 		System.out.println("===== Banco Digital ======");
 		System.out.println("1. Acessar conta existente.");
@@ -19,7 +17,7 @@ public class HomeMenuView {
 		
 		return sc.nextInt();
 	}
-	
+
 	
 	public static void startNavigation(Scanner sc) {
 		int option = 0;

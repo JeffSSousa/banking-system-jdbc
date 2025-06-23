@@ -15,11 +15,11 @@ import com.jeffersonssousa.model.enums.TypeTransaction;
 import com.jeffersonssousa.model.factory.TransactionFactory;
 import com.jeffersonssousa.repository.BaseRepository;
 
-public class TransactionRepository implements BaseRepository<Transaction> {
+public class TransactionDaoJDBC implements BaseRepository<Transaction> {
 
 	private Connection conn;
 
-	public TransactionRepository(Connection conn) {
+	public TransactionDaoJDBC(Connection conn) {
 		this.conn = conn;
 	}
 

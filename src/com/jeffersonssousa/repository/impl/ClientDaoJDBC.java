@@ -12,11 +12,11 @@ import com.jeffersonssousa.config.exceptions.DatabaseException;
 import com.jeffersonssousa.model.entities.Client;
 import com.jeffersonssousa.repository.BaseRepository;
 
-public class ClientRepository implements BaseRepository<Client> {
+public class ClientDaoJDBC implements BaseRepository<Client> {
 
 	private Connection conn;
 
-	public ClientRepository(Connection conn) {
+	public ClientDaoJDBC(Connection conn) {
 		this.conn = conn;
 	}
 

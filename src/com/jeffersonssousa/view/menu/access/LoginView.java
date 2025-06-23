@@ -6,6 +6,8 @@ import com.jeffersonssousa.view.util.Screen;
 
 public class LoginView {
 
+	
+	
 	public static int showLogin(Scanner sc) {
 		System.out.println("===================================");
 		System.out.println("          LOGIN DO CLIENTE        ");
@@ -14,8 +16,8 @@ public class LoginView {
 		System.out.print("CPF: ");
 		String cpf = sc.nextLine();
 
-		System.out.print("Senha: ");
-		String senha = sc.nextLine();
+		//System.out.print("Senha: ");
+		//String senha = sc.nextLine();
 		
 		System.out.println();
 		Screen.showReturnToMenu("Cliente");

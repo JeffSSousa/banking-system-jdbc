@@ -6,16 +6,16 @@ import com.jeffersonssousa.repository.DaoFactory;
 
 public class AuthService {
 
-	public boolean authenticateCpf(int id) {
-		if(DaoFactory.createClientDao().findById(id) == null) {
-			return false;
+	public Client authenticateCpf(String cpf) {
+		if(DaoFactory.createClientDao().findByCpf(cpf) == null) {
+			return null;
 		}
 		
-		return true;
+		return DaoFactory.createClientDao().findByCpf(cpf);
 	}
 
-	public Account login(int id, String password) {
-		Client client = DaoFactory.createClientDao().findById(id);
+	public Account login(String cpf, String password) {
+		Client client = authenticateCpf(cpf);
 		int clientId = client.getId();
 		
 		Account account = DaoFactory.createAccountDao().findById(clientId);

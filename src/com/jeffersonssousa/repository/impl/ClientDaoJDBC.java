@@ -11,8 +11,9 @@ import java.util.List;
 import com.jeffersonssousa.config.exceptions.DatabaseException;
 import com.jeffersonssousa.model.entities.Client;
 import com.jeffersonssousa.repository.BaseRepository;
+import com.jeffersonssousa.repository.ClientRepository;
 
-public class ClientDaoJDBC implements BaseRepository<Client> {
+public class ClientDaoJDBC implements ClientRepository {
 
 	private Connection conn;
 
@@ -31,100 +32,89 @@ public class ClientDaoJDBC implements BaseRepository<Client> {
 		return obj;
 	}
 
-	
-	
 	@Override
 	public void insert(Client obj) {
-	     String sql = "INSERT INTO tb_client "
-	     		      + "(first_name, last_name, cpf, email, birth_date)"
-	    		      + "values"
-	    		      + "( ?, ?, ?, ?, ?)";
-	     
-	     try(PreparedStatement st = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
-	    	 st.setString(1, obj.getFirstName());
-	    	 st.setString(2, obj.getLastName());
-	    	 st.setString(3, obj.getCpf());
-	    	 st.setString(4, obj.getEmail());
-	    	 
-	    	 st.setDate(5, java.sql.Date.valueOf(obj.getBirthDate()));
-	    	 
-	    	 int rowsAffected = st.executeUpdate();
-	    	 
-	    	 if(rowsAffected > 0) {
-	    		 try(ResultSet rs = st.getGeneratedKeys()){
-	    			 if(rs.next()) {
-	    				 int id = rs.getInt(1);
-	    				 obj.setId(id);
-	    			 }
-	    		 }
-	    	 } else {
-	    		 throw new DatabaseException("Nenhuma linha foi inserida");
-	    	 }
-	    	 
-	    	 System.out.println("Cliente Inserido no banco com Sucesso");
-	    	 
-	     } catch (SQLException e) {
-	    	   throw new DatabaseException("Erro ao inserir um Cliente: " + e.getMessage());
-	     }
+		String sql = "INSERT INTO tb_client " + "(first_name, last_name, cpf, email, birth_date)" + "values"
+				+ "( ?, ?, ?, ?, ?)";
+
+		try (PreparedStatement st = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+			st.setString(1, obj.getFirstName());
+			st.setString(2, obj.getLastName());
+			st.setString(3, obj.getCpf());
+			st.setString(4, obj.getEmail());
+
+			st.setDate(5, java.sql.Date.valueOf(obj.getBirthDate()));
+
+			int rowsAffected = st.executeUpdate();
+
+			if (rowsAffected > 0) {
+				try (ResultSet rs = st.getGeneratedKeys()) {
+					if (rs.next()) {
+						int id = rs.getInt(1);
+						obj.setId(id);
+					}
+				}
+			} else {
+				throw new DatabaseException("Nenhuma linha foi inserida");
+			}
+
+			System.out.println("Cliente Inserido no banco com Sucesso");
+
+		} catch (SQLException e) {
+			throw new DatabaseException("Erro ao inserir um Cliente: " + e.getMessage());
+		}
 	}
-	
-	
 
 	@Override
 	public void update(Client obj) {
-		String sql = "UPDATE tb_client"
-				   + " SET first_name = ?, last_name = ?, cpf = ?, email = ?, birth_date = ?"
-				   + " WHERE id = ?";
+		String sql = "UPDATE tb_client" + " SET first_name = ?, last_name = ?, cpf = ?, email = ?, birth_date = ?"
+				+ " WHERE id = ?";
 
-		try(PreparedStatement st = conn.prepareStatement(sql)){
+		try (PreparedStatement st = conn.prepareStatement(sql)) {
 			st.setString(1, obj.getFirstName());
 			st.setString(2, obj.getLastName());
 			st.setString(3, obj.getCpf());
 			st.setString(4, obj.getEmail());
 			st.setDate(5, java.sql.Date.valueOf(obj.getBirthDate()));
 			st.setInt(6, obj.getId());
-			
+
 			int rowsAffected = st.executeUpdate();
 			if (rowsAffected == 0) {
-			    throw new DatabaseException("Nenhum cliente com ID: " + obj.getId() + " foi encontrado para atualização.");
+				throw new DatabaseException(
+						"Nenhum cliente com ID: " + obj.getId() + " foi encontrado para atualização.");
 			}
-			
+
 			System.out.println("Cliente atualizado com sucesso");
-			
-		}catch (SQLException e) {
+
+		} catch (SQLException e) {
 			throw new DatabaseException("Erro ao atualizar dados do Cliente: " + e.getMessage());
 		}
 	}
-	
-	
 
 	@Override
 	public void delete(Integer id) {
-		String sql = "DELETE FROM tb_client "
-				     + "WHERE id = ?";
-		
-		try(PreparedStatement st = conn.prepareStatement(sql)){
+		String sql = "DELETE FROM tb_client " + "WHERE id = ?";
+
+		try (PreparedStatement st = conn.prepareStatement(sql)) {
 			st.setInt(1, id);
-			
+
 			int rowsAffacted = st.executeUpdate();
-			
-			if(rowsAffacted == 0) {
-				throw new DatabaseException("Nenhum cliente com o ID: " + id + " foi encontrado para ser deletado do banco de dados");
+
+			if (rowsAffacted == 0) {
+				throw new DatabaseException(
+						"Nenhum cliente com o ID: " + id + " foi encontrado para ser deletado do banco de dados");
 			}
-			
+
 			System.out.println("Cliente deletado com sucesso");
-			
-		} catch(SQLException e) {
+
+		} catch (SQLException e) {
 			throw new DatabaseException("Erro ao deletar um cliente do banco de dados: " + e.getMessage());
 		}
 	}
 
-	
-	
 	@Override
 	public Client findById(Integer id) {
-		String sql = "SELECT * FROM system_bank.tb_client" 
-	                 + " WHERE id = ?";
+		String sql = "SELECT * FROM system_bank.tb_client" + " WHERE id = ?";
 
 		try (PreparedStatement st = conn.prepareStatement(sql)) {
 			st.setInt(1, id);
@@ -133,7 +123,7 @@ public class ClientDaoJDBC implements BaseRepository<Client> {
 				if (rs.next()) {
 					return instantiateClient(rs);
 				} else {
-					throw new DatabaseException("Cliente do ID: " + id +" não foi encontrado no Banco de Dados!!");
+					throw new DatabaseException("Cliente do ID: " + id + " não foi encontrado no Banco de Dados!!");
 				}
 			}
 
@@ -142,16 +132,33 @@ public class ClientDaoJDBC implements BaseRepository<Client> {
 		}
 	}
 
-	
-	
+	@Override
+	public Client findByCpf(String cpf) {
+		String sql = "SELECT * FROM system_bank.tb_client" + " WHERE cpf = ?";
+
+		try (PreparedStatement st = conn.prepareStatement(sql)) {
+			st.setString(1, cpf);
+
+			try (ResultSet rs = st.executeQuery()) {
+				if (rs.next()) {
+					return instantiateClient(rs);
+				} else {
+					throw new DatabaseException("Cliente do CPF: " + cpf + " não foi encontrado no Banco de Dados!!");
+				}
+			}
+
+		} catch (SQLException e) {
+			throw new DatabaseException("Erro ao procurar cliente do CPF: " + e.getMessage());
+		}
+	}
+
 	@Override
 	public List<Client> findAll() {
 		List<Client> list = new ArrayList<Client>();
 
 		String sql = "SELECT * FROM tb_client";
 
-		try (PreparedStatement st = conn.prepareStatement(sql); 
-			 ResultSet rs = st.executeQuery()) {
+		try (PreparedStatement st = conn.prepareStatement(sql); ResultSet rs = st.executeQuery()) {
 
 			while (rs.next()) {
 				list.add(instantiateClient(rs));

@@ -18,7 +18,7 @@ public class ClientMenuView {
 		System.out.println("2. Consultar saldo");
 		System.out.println("3. Depositar valor (em desenvolvimento)");
 		System.out.println("4. Sacar valor (em desenvolvimento)");
-		System.out.println("5. Transferir para outra conta");
+		System.out.println("5. Transferir para outra conta (em desenvolvimento)");
 		System.out.println("6. Ver extrato");
 		System.out.println("0. Sair da Conta");
 		System.out.println();
@@ -50,10 +50,10 @@ public class ClientMenuView {
 				WithdrawValueView.startNavigation(sc);;
 				break;
 			case 5:
-				TransferView.transferCompleted(sc);
+				TransferView.startNavigation(sc);
 				break;
 			case 6:
-				BankStatementView.showBankStatement(sc);
+				BankStatementView.startNavigation(sc);
 				break;
 			}
 

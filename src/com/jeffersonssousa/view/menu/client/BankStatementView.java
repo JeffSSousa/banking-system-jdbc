@@ -2,6 +2,8 @@ package com.jeffersonssousa.view.menu.client;
 
 import java.util.Scanner;
 
+import com.jeffersonssousa.view.util.Screen;
+
 public class BankStatementView {
 
 	public static int showBankStatement(Scanner sc){
@@ -15,6 +17,29 @@ public class BankStatementView {
 		
 		System.out.println();
 		System.out.println("Total de transações: 4");
+		
+		System.out.println();
+		Screen.showReturnToMenu("Cliente");
+		
 		return sc.nextInt();
 	}
+	
+	public static void startNavigation(Scanner sc) {
+		int option = 0;
+
+		do {
+			Screen.clearScreen();
+			Screen.notifyInvalidOption(1, option);
+
+			option = showBankStatement(sc);
+
+			switch (option) {
+			case 1:
+				Screen.showReturningToMenu();
+				break;
+			}
+
+		} while (option != 1);
+	}
+	
 }

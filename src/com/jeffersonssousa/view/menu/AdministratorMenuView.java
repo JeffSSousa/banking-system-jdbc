@@ -18,6 +18,9 @@ public class AdministratorMenuView {
 		System.out.println("4. Procurar Cliente/Conta");
 		System.out.println("5. Sair");
 
+		System.out.println();
+		System.out.print("Informe a opção desejada:");
+		
 		return sc.nextInt();
 	}
 

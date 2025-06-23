@@ -2,45 +2,50 @@ package com.jeffersonssousa.view.menu.access;
 
 import java.util.Scanner;
 
+import com.jeffersonssousa.controller.LoginController;
+import com.jeffersonssousa.model.entities.Account;
+import com.jeffersonssousa.view.menu.ClientMenuView;
 import com.jeffersonssousa.view.util.Screen;
 
 public class LoginView {
 
-	
-	
-	public static int showLogin(Scanner sc) {
-		System.out.println("===================================");
-		System.out.println("          LOGIN DO CLIENTE        ");
-		System.out.println("===================================");
-
-		System.out.print("CPF: ");
-		String cpf = sc.nextLine();
-
-		//System.out.print("Senha: ");
-		//String senha = sc.nextLine();
-		
-		System.out.println();
-		Screen.showReturnToMenu("Cliente");
-
-		return sc.nextInt();
-	}
-
 	public static void startNavigation(Scanner sc) {
-		int option = 0;
+        LoginController controller = new LoginController();
+        int option = 0;
 
-		do {
-			Screen.clearScreen();
-			Screen.notifyInvalidOption(1, option);
+        do {
+            try {
+                Screen.clearScreen();
 
-			option = showLogin(sc);
+                System.out.println("===================================");
+                System.out.println("          LOGIN DO CLIENTE        ");
+                System.out.println("===================================");
+                System.out.println();
 
-			switch (option) {
-			case 1:
-				Screen.showReturningToMenu();
-				break;
-			}
+                System.out.print("CPF: ");
+                sc.nextLine(); 
+                String cpf = sc.nextLine().trim();
 
-		} while (option != 1);
-	}
+                System.out.print("Senha: ");
+                String senha = sc.nextLine().trim();
 
+                Account account = controller.validate(cpf, senha);
+
+                System.out.println("\n✅ Login bem-sucedido!");
+                System.out.println();
+
+                if (account != null) {
+                option = 1;
+                Screen.clearScreen();
+                ClientMenuView.startNavigation(sc);
+                }
+                
+            } catch (Exception e) {
+                System.out.println("\n❌ Erro ao fazer login: " + e.getMessage());
+                System.out.println("Tente novamente.\n");
+            }
+            
+            
+        } while (option != 1);
+    }
 }

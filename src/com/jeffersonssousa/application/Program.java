@@ -10,13 +10,8 @@ import com.jeffersonssousa.view.util.Screen;
 public class Program {
 	public static void main(String[] args) {
 
-		AuthService service = new AuthService();
-		System.out.println(service.authenticateCpf("123.456.789-00"));
-		Account acc = service.login("123.456.789-00", "Jef415");
 		
-		System.out.println(acc);
-		
-		//testScreen();
+		testScreen();
 	}
 
 	public static void testScreen() {

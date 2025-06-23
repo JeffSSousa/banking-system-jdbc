@@ -1,30 +1,23 @@
 package com.jeffersonssousa.services;
 
+import com.jeffersonssousa.config.exceptions.DatabaseException;
 import com.jeffersonssousa.model.entities.Account;
 import com.jeffersonssousa.model.entities.Client;
 import com.jeffersonssousa.repository.DaoFactory;
 
 public class AuthService {
 
-	public Client authenticateCpf(String cpf) {
-		if(DaoFactory.createClientDao().findByCpf(cpf) == null) {
-			return null;
-		}
-		
-		return DaoFactory.createClientDao().findByCpf(cpf);
-	}
-
 	public Account login(String cpf, String password) {
-		Client client = authenticateCpf(cpf);
-		int clientId = client.getId();
-		
-		Account account = DaoFactory.createAccountDao().findByClientId(clientId);
-		if (account.getPassword().equals(password)) {
-			System.out.println("Login Bem-Sucedido");
-		return account;
-		} 
-		
-		System.out.println("Senha Incorreta");
-		return null;
+		Client client = DaoFactory.createClientDao().findByCpf(cpf);
+	    if (client == null) {
+	        throw new DatabaseException("Cliente do CPF " + cpf + " não foi encontrado no Banco de Dados!!");
+	    }
+
+	    Account account = DaoFactory.createAccountDao().findById(client.getId());
+	    if (account == null || !account.getPassword().equals(password)) {
+	        throw new RuntimeException("Senha incorreta.");
+	    }
+
+	    return account;
 	}
 }

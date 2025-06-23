@@ -2,6 +2,7 @@ package com.jeffersonssousa.view.menu;
 
 import java.util.Scanner;
 
+import com.jeffersonssousa.view.menu.access.ClientAccessView;
 import com.jeffersonssousa.view.util.Screen;
 
 public class StartView {
@@ -32,7 +33,7 @@ public class StartView {
 
 			switch (option) {
 			case 1:
-				HomeMenuView.startNavigation(sc);
+				ClientAccessView.startNavigation(sc);
 				break;
 			case 2:
 				System.out.println("Menu Funcionario");

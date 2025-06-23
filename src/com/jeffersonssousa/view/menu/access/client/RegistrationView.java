@@ -1,4 +1,4 @@
-package com.jeffersonssousa.view.menu.access;
+package com.jeffersonssousa.view.menu.access.client;
 
 import java.util.Scanner;
 

@@ -1,12 +1,12 @@
-package com.jeffersonssousa.view.menu;
+package com.jeffersonssousa.view.menu.access;
 
 import java.util.Scanner;
 
-import com.jeffersonssousa.view.menu.access.ClientLoginView;
-import com.jeffersonssousa.view.menu.access.RegistrationView;
+import com.jeffersonssousa.view.menu.access.client.ClientLoginView;
+import com.jeffersonssousa.view.menu.access.client.RegistrationView;
 import com.jeffersonssousa.view.util.Screen;
 
-public class HomeMenuView {
+public class ClientAccessView {
 
 	public static int showHomeMenu(Scanner sc) {
 		System.out.println("====== MENU CLIENTE =======");

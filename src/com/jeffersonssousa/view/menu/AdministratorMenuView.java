@@ -20,22 +20,22 @@ public class AdministratorMenuView {
 
 		return sc.nextInt();
 	}
-	
+
 	public static void startNavigation(Scanner sc) {
 		int option = 0;
 
 		do {
 			Screen.clearScreen();
 			Screen.notifyInvalidOption(5, option);
-			
+
 			option = showAdministratorMenu(sc);
 
 			switch (option) {
 			case 1:
-				ListClientsView.showClients(sc);
+				ListClientsView.startNavigation(sc);
 				break;
 			case 2:
-				ListAccountsView.showAccounts(sc);
+				ListAccountsView.startNavigation(sc);
 				break;
 			case 3:
 				DeleteAccessView.startNavigation(sc);

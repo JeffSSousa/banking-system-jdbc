@@ -7,7 +7,7 @@ import com.jeffersonssousa.view.util.Screen;
 
 public class Program {
 	public static void main(String[] args) {
-		
+
 		testScreen();
 	}
 

@@ -2,6 +2,8 @@ package com.jeffersonssousa.view.menu.adm;
 
 import java.util.Scanner;
 
+import com.jeffersonssousa.view.util.Screen;
+
 public class ListAccountsView {
 	
 	public static int showAccounts(Scanner sc) {
@@ -18,7 +20,29 @@ public class ListAccountsView {
 			System.out.println();
 		}
 		
+		System.out.println("1. Voltar ao menu de Administrador");
+		System.out.print("Informe a opção desejada:");
+		
 		return sc.nextInt();
+	}
+	
+	public static void startNavigation(Scanner sc) {
+		int option = 0;
+
+		do {
+			Screen.clearScreen();
+			Screen.notifyInvalidOption(1, option);
+
+			option = showAccounts(sc);
+
+			switch (option) {
+			case 1:
+				System.out.println("Voltando ao Menu Principal...");
+				System.out.println();
+				break;
+			}
+
+		} while (option != 1);
 	}
 
 }

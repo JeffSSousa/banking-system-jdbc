@@ -18,7 +18,6 @@ public class ListClients {
 			System.out.println();
 		}
 		
-		
 		return sc.nextInt();
 	}
 

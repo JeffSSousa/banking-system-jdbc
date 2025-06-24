@@ -10,4 +10,9 @@ public class ClientService {
 		return obj;
 	}
 	
+	public Client findClientDataByCpf(String cpf) {
+		Client obj = DaoFactory.createClientDao().findByCpf(cpf);
+		return obj;
+	}
+	
 }

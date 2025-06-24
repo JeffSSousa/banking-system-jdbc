@@ -9,5 +9,8 @@ public class ClientController {
 	public Client viewCustomerData(int id) {
 		return service.findClientData(id);
 	}
-
+	
+	public Client viewCustomerDataByCpf(String cpf) {
+		return service.findClientDataByCpf(cpf);
+	}
 }

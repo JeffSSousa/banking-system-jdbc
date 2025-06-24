@@ -2,6 +2,8 @@ package com.jeffersonssousa.view.menu;
 
 import java.util.Scanner;
 
+import com.jeffersonssousa.model.entities.Account;
+import com.jeffersonssousa.model.entities.Client;
 import com.jeffersonssousa.view.menu.client.AccountDetailsView;
 import com.jeffersonssousa.view.menu.client.BankStatementView;
 import com.jeffersonssousa.view.menu.client.CheckBalance;
@@ -27,7 +29,7 @@ public class ClientMenuView {
 		return sc.nextInt();
 	}
 
-	public static void startNavigation(Scanner sc) {
+	public static void startNavigation(Scanner sc, Account account, Client client) {
 		int option = 0;
 
 		do {
@@ -38,7 +40,7 @@ public class ClientMenuView {
 
 			switch (option) {
 			case 1:
-				AccountDetailsView.startNavigation(sc);;
+				AccountDetailsView.startNavigation(sc, account, client);;
 				break;
 			case 2:
 				CheckBalance.startNavigation(sc);

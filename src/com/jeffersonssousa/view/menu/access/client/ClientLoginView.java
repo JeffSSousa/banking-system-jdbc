@@ -2,15 +2,18 @@ package com.jeffersonssousa.view.menu.access.client;
 
 import java.util.Scanner;
 
+import com.jeffersonssousa.controller.ClientController;
 import com.jeffersonssousa.controller.LoginController;
 import com.jeffersonssousa.model.entities.Account;
+import com.jeffersonssousa.model.entities.Client;
 import com.jeffersonssousa.view.menu.ClientMenuView;
 import com.jeffersonssousa.view.util.Screen;
 
 public class ClientLoginView {
 
 	public static void startNavigation(Scanner sc) {
-        LoginController controller = new LoginController();
+        LoginController loginController = new LoginController();
+        ClientController clientController = new ClientController();
         int option = 0;
 
         do {
@@ -28,15 +31,17 @@ public class ClientLoginView {
                 System.out.print("Senha: ");
                 String senha = sc.nextLine().trim();
 
-                Account account = controller.validate(cpf, senha);
+                Account account = loginController.validate(cpf, senha);
+                
 
                 System.out.println("\n✅ Login bem-sucedido!");
                 System.out.println();
 
                 if (account != null) {
+                Client client =  clientController.viewCustomerDataByCpf(cpf);
                 option = 1;
                 Screen.clearScreen();
-                ClientMenuView.startNavigation(sc);
+                ClientMenuView.startNavigation(sc, account, client);
                 }
                 
             } catch (Exception e) {

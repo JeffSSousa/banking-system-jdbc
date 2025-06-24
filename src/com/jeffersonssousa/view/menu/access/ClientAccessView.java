@@ -34,9 +34,11 @@ public class ClientAccessView {
 			switch (option) {
 			case 1:
 				ClientLoginView.startNavigation(sc);
+				option = 3;
 				break;
 			case 2:
 				RegistrationView.startNavigation(sc);
+				option = 3;
 				break;
 			}
 

@@ -32,9 +32,11 @@ public class AdmAccessView {
 			switch (option) {
 			case 1:
 				System.out.println("AdmLoginView");
+				option = 3;
 				break;
 			case 2:
 				System.out.println("AdmRegistrationView");
+				option = 3;
 				break;
 			}
 

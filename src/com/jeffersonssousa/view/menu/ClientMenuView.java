@@ -46,13 +46,13 @@ public class ClientMenuView {
 				CheckBalance.startNavigation(sc, account, client);
 				break;
 			case 3:
-				DepositValueView.startNavigation(sc);;
+				DepositValueView.startNavigation(sc); // Deixar por ultimo
 				break;
 			case 4:
-				WithdrawValueView.startNavigation(sc);;
+				WithdrawValueView.startNavigation(sc);// Deixar por ultimo
 				break;
 			case 5:
-				TransferView.startNavigation(sc);
+				TransferView.startNavigation(sc); // deixar por ultimo
 				break;
 			case 6:
 				BankStatementView.startNavigation(sc);

@@ -13,7 +13,7 @@ public class AuthService {
 	        throw new DatabaseException("Cliente do CPF " + cpf + " não foi encontrado no Banco de Dados!!");
 	    }
 
-	    Account account = DaoFactory.createAccountDao().findById(client.getId());
+	    Account account = DaoFactory.createAccountDao().findByClientId(client.getId());
 	    if (account == null || !account.getPassword().equals(password)) {
 	        throw new RuntimeException("Senha incorreta.");
 	    }

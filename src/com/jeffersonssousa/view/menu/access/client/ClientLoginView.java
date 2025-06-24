@@ -15,18 +15,21 @@ public class ClientLoginView {
         LoginController loginController = new LoginController();
         ClientController clientController = new ClientController();
         int option = 0;
+        
+        sc.nextLine();
+        
 
         do {
             try {
                 Screen.clearScreen();
-
                 
                 System.out.println("====== LOGIN DO CLIENTE ======");
                 System.out.println();
-
+               
+                
                 System.out.print("CPF: ");
-                sc.nextLine(); 
                 String cpf = sc.nextLine().trim();
+                
 
                 System.out.print("Senha: ");
                 String senha = sc.nextLine().trim();
@@ -37,7 +40,7 @@ public class ClientLoginView {
                 System.out.println("\n✅ Login bem-sucedido!");
                 System.out.println();
 
-                if (account != null) {
+                if (account.getPassword().equals(senha)) {
                 Client client =  clientController.viewCustomerDataByCpf(cpf);
                 option = 1;
                 Screen.clearScreen();
@@ -46,7 +49,9 @@ public class ClientLoginView {
                 
             } catch (Exception e) {
                 System.out.println("\n❌ Erro ao fazer login: " + e.getMessage());
-                System.out.println("Tente novamente.\n");
+                System.out.println();
+                System.out.println("Tente novamente...");
+                Screen.timeSleep(3000);
             }
             
             

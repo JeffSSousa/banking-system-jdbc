@@ -6,6 +6,8 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+import com.jeffersonssousa.view.util.exceptions.TimeSleepException;
+
 public class Screen {
 
 	public static void clearScreen() {
@@ -45,5 +47,13 @@ public class Screen {
 	public static String formatInstant(Instant datetime) {
 		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss").withZone(ZoneId.systemDefault());
 		return fmt.format(datetime);
+	}
+	
+	public static void timeSleep(int value) {
+		try {
+			Thread.sleep(value);
+		} catch (InterruptedException e) {
+			throw new TimeSleepException(e.getMessage());
+		}
 	}
 }

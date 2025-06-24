@@ -10,7 +10,6 @@ import java.util.List;
 
 import com.jeffersonssousa.config.exceptions.DatabaseException;
 import com.jeffersonssousa.model.entities.Client;
-import com.jeffersonssousa.repository.BaseRepository;
 import com.jeffersonssousa.repository.ClientRepository;
 
 public class ClientDaoJDBC implements ClientRepository {

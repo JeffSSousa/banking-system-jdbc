@@ -11,7 +11,6 @@ import java.util.List;
 import com.jeffersonssousa.config.exceptions.DatabaseException;
 import com.jeffersonssousa.model.entities.Account;
 import com.jeffersonssousa.repository.AccountRepository;
-import com.jeffersonssousa.repository.BaseRepository;
 
 public class AccountDaoJDBC implements AccountRepository {
 

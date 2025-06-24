@@ -13,9 +13,9 @@ import com.jeffersonssousa.model.entities.Account;
 import com.jeffersonssousa.model.entities.Transaction;
 import com.jeffersonssousa.model.enums.TypeTransaction;
 import com.jeffersonssousa.model.factory.TransactionFactory;
-import com.jeffersonssousa.repository.BaseRepository;
+import com.jeffersonssousa.repository.TransactionRepository;
 
-public class TransactionDaoJDBC implements BaseRepository<Transaction> {
+public class TransactionDaoJDBC implements TransactionRepository {
 
 	private Connection conn;
 

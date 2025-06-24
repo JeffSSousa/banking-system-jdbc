@@ -19,7 +19,7 @@ public class TransferView {
 		System.out.println("Novo saldo: R$ 5.049,75");
 		
 		System.out.println();
-		Screen.showReturnToMenu("Cliente");
+		Screen.showReturnToMenu(1);
 		
 		return sc.nextInt();
 	}

@@ -16,7 +16,7 @@ public class WithdrawValueView {
 		System.out.println("Novo saldo: R$ 5.150,75");
 		
 		System.out.println();
-		Screen.showReturnToMenu("Cliente");
+		Screen.showReturnToMenu(1);
 		
 		return sc.nextInt();
 	}

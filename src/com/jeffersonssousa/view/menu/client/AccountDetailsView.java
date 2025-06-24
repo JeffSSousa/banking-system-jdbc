@@ -22,7 +22,7 @@ public class AccountDetailsView {
 		System.out.println("Tipo da Conta: " + TypeAccount.valueOf(account.getTypeAccountId()));
 		
 		System.out.println();
-		Screen.showReturnToMenu("Cliente");
+		Screen.showReturnToMenu(1);
 		
 		return sc.nextInt();
 	}

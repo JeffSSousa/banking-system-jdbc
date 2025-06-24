@@ -16,7 +16,7 @@ public class CheckBalance {
 		System.out.printf("Saldo Atual: R$ %.2f\n", account.getBalance());
 		
 		System.out.println();
-		Screen.showReturnToMenu("Cliente");
+		Screen.showReturnToMenu(1);
 
 		return sc.nextInt();
 	}

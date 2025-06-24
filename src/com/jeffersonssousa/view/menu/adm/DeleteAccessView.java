@@ -13,8 +13,8 @@ public class DeleteAccessView {
 		System.out.println("=========================================");
 		System.out.println("1. Encerrar Conta Bancária (por número da conta)");
 		System.out.println("2. Excluir Cliente e Contas Bancarias vinculadas(por CPF)");
-		System.out.println();
-		System.out.print("Informe a opção desejada: ");
+		
+		Screen.showReturnToMenu(3);
 
 		return sc.nextInt();
 	}
@@ -24,7 +24,7 @@ public class DeleteAccessView {
 
 		do {
 			Screen.clearScreen();
-			Screen.notifyInvalidOption(2, option);
+			Screen.notifyInvalidOption(3, option);
 
 			option = showDeleteMenu(sc);
 
@@ -35,9 +35,12 @@ public class DeleteAccessView {
 			case 2:
 				System.out.println("Cliente Excluido"); // criar class view com validação
 				break;
+			case 3:
+				System.out.println("Cliente Excluido"); // criar class view com validação
+				break;
 			}
 
-		} while (option != 0);
+		} while (option != 3);
 	}
 
 	

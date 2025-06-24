@@ -22,7 +22,8 @@ public class ClientMenuView {
 		System.out.println("4. Sacar valor (em desenvolvimento)");
 		System.out.println("5. Transferir para outra conta (em desenvolvimento)");
 		System.out.println("6. Ver extrato");
-		System.out.println("0. Sair da Conta");
+		System.out.println("7. Sair da Conta");
+		
 		System.out.println();
 		System.out.print("Digite: ");
 
@@ -34,7 +35,7 @@ public class ClientMenuView {
 
 		do {
 			Screen.clearScreen();
-			Screen.notifyInvalidOption(6, option);
+			Screen.notifyInvalidOption(7, option);
 			
 			option = showClientMenu(sc);
 
@@ -59,7 +60,7 @@ public class ClientMenuView {
 				break;
 			}
 
-		} while (option != 0);
+		} while (option != 7);
 	}
 
 }

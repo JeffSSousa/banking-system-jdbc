@@ -17,7 +17,7 @@ public class TransactionsStatement {
 		controller.showBankStatement(account.getId());
 
 		System.out.println();
-		Screen.showReturnToMenu("Cliente");
+		Screen.showReturnToMenu(1);
 
 		return sc.nextInt();
 	}

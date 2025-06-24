@@ -5,6 +5,7 @@ import com.jeffersonssousa.model.entities.Transaction;
 import com.jeffersonssousa.model.enums.TypeTransaction;
 import com.jeffersonssousa.services.AccountService;
 import com.jeffersonssousa.services.TransactionsServices;
+import com.jeffersonssousa.view.util.Screen;
 
 public class TransactionController {
 	
@@ -16,7 +17,7 @@ public class TransactionController {
 		for(Transaction transaction: transactionService.findTransactions(id)) {
 			Account receiver = accountService.findAccountData(transaction.getReceiver().getId());
 			
-			System.out.println("[" + transaction.getTransactionDate() + "] "
+			System.out.println("[" + Screen.formatInstant(transaction.getTransactionDate()) + "] "
 					           + TypeTransaction.valueOf(transaction.getTypeTransaction().getId())
 					           + String.format(": R$ %.2f", transaction.getAmount())
 					           + " - Para Conta: " + receiver.getAccountNumber() + "\n");

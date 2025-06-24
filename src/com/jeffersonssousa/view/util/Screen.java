@@ -1,6 +1,8 @@
 package com.jeffersonssousa.view.util;
 
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
@@ -12,13 +14,13 @@ public class Screen {
 	    }
 	}
 
-	public static void showReturnToMenu(String msg) {
-		System.out.println("1. Voltar ao Menu de " + msg);
+	public static void showReturnToMenu(int number) {
+		System.out.println(number + ". Voltar");
 		System.out.print("Informe a opção desejada:");
 	}
 
 	public static void showReturningToMenu() {
-		System.out.println("Voltando ao Menu Principal...");
+		System.out.println("Voltando...");
 		System.out.println();
 	}
 
@@ -38,5 +40,10 @@ public class Screen {
 	public static String formatLocalDate(LocalDate date) {
 		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		return date.format(fmt);
+	}
+	
+	public static String formatInstant(Instant datetime) {
+		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss").withZone(ZoneId.systemDefault());
+		return fmt.format(datetime);
 	}
 }

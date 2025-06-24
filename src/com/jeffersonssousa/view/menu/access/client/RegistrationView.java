@@ -12,7 +12,7 @@ public class RegistrationView {
 	        System.out.println("===================================");
 	        
 	        System.out.println();
-			Screen.showReturnToMenu("Cliente");
+			Screen.showReturnToMenu(1);
 	        
 	        return sc.nextInt();
 	  }

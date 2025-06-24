@@ -18,7 +18,7 @@ public class FindAccessView {
 		System.out.println("5. Buscar Conta por cpf do cliente: ");
 		
 		System.out.println();
-		System.out.print("Informe a opção desejada: ");
+		Screen.showReturnToMenu(6);
 
 		return sc.nextInt();
 	}
@@ -29,7 +29,7 @@ public class FindAccessView {
 
 		do {
 			Screen.clearScreen();
-			Screen.notifyInvalidOption(2, option);
+			Screen.notifyInvalidOption(6, option);
 
 			option = showAccessView(sc);
 
@@ -49,9 +49,12 @@ public class FindAccessView {
 			case 5:
 				System.out.println("Encontrado"); // criar class view 
 				break;
+			case 6:
+				System.out.println("Encontrado"); // criar class view 
+				break;
 			}
 
-		} while (option != 0);
+		} while (option != 6);
 	}
 
 }

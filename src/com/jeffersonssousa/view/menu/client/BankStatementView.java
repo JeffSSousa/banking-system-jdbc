@@ -20,7 +20,7 @@ public class BankStatementView {
 		
 		
 		System.out.println();
-		Screen.showReturnToMenu("Cliente");
+		Screen.showReturnToMenu(3);
 		
 		return sc.nextInt();
 	}

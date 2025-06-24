@@ -20,8 +20,7 @@ public class ListClientsView {
 			System.out.println();
 		}
 
-		System.out.println("1. Voltar ao menu de Administrador");
-		System.out.print("Informe a opção desejada:");
+		Screen.showReturnToMenu(1);
 
 		return sc.nextInt();
 	}
@@ -37,8 +36,7 @@ public class ListClientsView {
 
 			switch (option) {
 			case 1:
-				System.out.println("Voltando ao Menu Principal...");
-				System.out.println();
+				Screen.showReturningToMenu();
 				break;
 			}
 

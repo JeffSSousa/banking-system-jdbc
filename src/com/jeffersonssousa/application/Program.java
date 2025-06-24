@@ -8,6 +8,7 @@ import com.jeffersonssousa.view.util.Screen;
 public class Program {
 	public static void main(String[] args) {
 
+		//DaoFactory.createTransactionDao().findByReceiverId(5).forEach(System.out::println);
 		
 		testScreen();
 	}

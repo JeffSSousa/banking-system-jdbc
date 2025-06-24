@@ -11,5 +11,7 @@ public interface TransactionRepository {
 	void delete(Integer id);
 	Transaction findById (Integer id);
 	List<Transaction> findAll();
+	List<Transaction> findBySenderId(Integer senderId);
+	List<Transaction> findByReceiverId(Integer receiverId);
 
 }

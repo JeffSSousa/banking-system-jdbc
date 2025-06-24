@@ -126,6 +126,51 @@ public class TransactionDaoJDBC implements TransactionRepository {
 	}
 
 	@Override
+	public List<Transaction> findBySenderId(Integer senderId) {
+		List<Transaction> list = new ArrayList<>();
+
+		String sql = "SELECT * FROM system_bank.tb_transaction " + "WHERE sender_id = ?";
+		try (PreparedStatement st = conn.prepareStatement(sql)) {
+			st.setInt(1, senderId);
+
+			try (ResultSet rs = st.executeQuery()) {
+				while (rs.next()) {
+					list.add(instantiateTransaction(rs));
+				}
+			} catch (SQLException e) {
+				throw new DatabaseException("Erro no Processo de Buscas das Transações Enviadas: " + e.getMessage());
+			}
+		} catch (SQLException e) {
+			throw new DatabaseException("Erro ao executar a busca:" + e.getMessage());
+		}
+
+		return list;
+
+	}
+
+	@Override
+	public List<Transaction> findByReceiverId(Integer receiverId) {
+		List<Transaction> list = new ArrayList<>();
+
+		String sql = "SELECT * FROM system_bank.tb_transaction " + "WHERE receiver_id = ?";
+		try (PreparedStatement st = conn.prepareStatement(sql)) {
+			st.setInt(1, receiverId);
+
+			try (ResultSet rs = st.executeQuery()) {
+				while (rs.next()) {
+					list.add(instantiateTransaction(rs));
+				}
+			} catch (SQLException e) {
+				throw new DatabaseException("Erro no Processo de Buscas das Transações Enviadas: " + e.getMessage());
+			}
+		} catch (SQLException e) {
+			throw new DatabaseException("Erro ao executar a busca:" + e.getMessage());
+		}
+
+		return list;
+	}
+
+	@Override
 	public List<Transaction> findAll() {
 		List<Transaction> list = new ArrayList<>();
 

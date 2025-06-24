@@ -55,7 +55,7 @@ public class ClientMenuView {
 				TransferView.startNavigation(sc); // deixar por ultimo
 				break;
 			case 6:
-				BankStatementView.startNavigation(sc);
+				BankStatementView.startNavigation(sc, account);
 				break;
 			}
 

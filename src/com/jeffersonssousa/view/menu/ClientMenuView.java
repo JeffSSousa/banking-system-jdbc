@@ -40,10 +40,10 @@ public class ClientMenuView {
 
 			switch (option) {
 			case 1:
-				AccountDetailsView.startNavigation(sc, account, client);;
+				AccountDetailsView.startNavigation(sc, account, client);
 				break;
 			case 2:
-				CheckBalance.startNavigation(sc);
+				CheckBalance.startNavigation(sc, account, client);
 				break;
 			case 3:
 				DepositValueView.startNavigation(sc);;

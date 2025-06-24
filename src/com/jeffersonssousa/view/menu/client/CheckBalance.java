@@ -2,15 +2,18 @@ package com.jeffersonssousa.view.menu.client;
 
 import java.util.Scanner;
 
+import com.jeffersonssousa.model.entities.Account;
+import com.jeffersonssousa.model.entities.Client;
+import com.jeffersonssousa.model.enums.TypeAccount;
 import com.jeffersonssousa.view.util.Screen;
 
 public class CheckBalance {
 
-	public static int show(Scanner sc) {
+	public static int show(Scanner sc, Account account, Client client) {
 		System.out.println("=== SALDO DISPONÍVEL ===");
-		System.out.println("Nome do Cliente: Jefferson Sousa");
-		System.out.println("Conta: 12345-6 - CONTA CORRENTE");
-		System.out.println("Saldo Atual: R$ 5.250,75");
+		System.out.println("Nome do Cliente: " + client.getFirstName() + " " + client.getLastName());
+		System.out.println("Conta: " + account.getAccountNumber() + " - " + TypeAccount.valueOf(account.getTypeAccountId()));
+		System.out.printf("Saldo Atual: R$ %.2f\n", account.getBalance());
 		
 		System.out.println();
 		Screen.showReturnToMenu("Cliente");
@@ -18,14 +21,14 @@ public class CheckBalance {
 		return sc.nextInt();
 	}
 	
-	public static void startNavigation(Scanner sc) {
+	public static void startNavigation(Scanner sc, Account account, Client client) {
 		int option = 0;
 
 		do {
 			Screen.clearScreen();
 			Screen.notifyInvalidOption(1, option);
 
-			option = show(sc);
+			option = show(sc, account, client);
 
 			switch (option) {
 			case 1:

@@ -1,6 +1,7 @@
 package com.jeffersonssousa.model.entities;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 public class Client {
@@ -86,6 +87,11 @@ public class Client {
 			return false;
 		Client other = (Client) obj;
 		return Objects.equals(cpf, other.cpf);
+	}
+	
+	public Long getAge() {
+		Long yearsOld = ChronoUnit.YEARS.between(birthDate, LocalDate.now());
+		return yearsOld;
 	}
 
 	@Override

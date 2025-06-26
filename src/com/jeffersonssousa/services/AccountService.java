@@ -9,5 +9,10 @@ public class AccountService {
 		Account obj = DaoFactory.createAccountDao().findById(id);
 		return obj;
 	}
+	
+	public Account findAccountDataByClientID(int id) {
+		Account obj = DaoFactory.createAccountDao().findByClientId(id);
+		return obj;
+	}
 
 }

@@ -57,8 +57,6 @@ public class ClientDaoJDBC implements ClientRepository {
 				throw new DatabaseException("Nenhuma linha foi inserida");
 			}
 
-			System.out.println("Cliente Inserido no banco com Sucesso");
-
 		} catch (SQLException e) {
 			throw new DatabaseException("Erro ao inserir um Cliente: " + e.getMessage());
 		}
@@ -142,7 +140,27 @@ public class ClientDaoJDBC implements ClientRepository {
 				if (rs.next()) {
 					return instantiateClient(rs);
 				} else {
-					throw new DatabaseException("Cliente do CPF: " + cpf + " não foi encontrado no Banco de Dados!!");
+					return null;
+				}
+			}
+
+		} catch (SQLException e) {
+			throw new DatabaseException("Erro ao procurar cliente do CPF: " + e.getMessage());
+		}
+	}
+
+	@Override
+	public Client findByEmail(String email) {
+		String sql = "SELECT * FROM system_bank.tb_client" + " WHERE email = ?";
+
+		try (PreparedStatement st = conn.prepareStatement(sql)) {
+			st.setString(1, email);
+
+			try (ResultSet rs = st.executeQuery()) {
+				if (rs.next()) {
+					return instantiateClient(rs);
+				} else {
+					return null;
 				}
 			}
 

@@ -1,5 +1,7 @@
 package com.jeffersonssousa.controller;
 
+import java.util.Arrays;
+
 import com.jeffersonssousa.model.entities.Client;
 import com.jeffersonssousa.services.ClientService;
 import com.jeffersonssousa.view.util.Screen;
@@ -29,5 +31,33 @@ public class ClientController {
 			System.out.println();
 		}
 	}
+	
+	public boolean isCpfAvailable(String cpf) {
+		if(service.existsCPF(cpf)) {
+			return false;
+		} 
+		return true;
+	}
+	
+	public boolean isEmailAvailable(String email) {
+		if(service.existsEmail(email)) {
+			return false;
+		} 
+		return true;
+	}
 
+	public String[] splitName(String fullName) {
+
+	    String[] parts = fullName.trim().split("\\s+");
+	    String firstName = parts[0];
+	    String lastName = "";
+
+	    if (parts.length > 1) {
+	        lastName = String.join(" ", Arrays.copyOfRange(parts, 1, parts.length));
+	    }
+
+	    return new String[]{ firstName, lastName };
+	}
+	
+	
 }

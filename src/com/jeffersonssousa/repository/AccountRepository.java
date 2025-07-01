@@ -11,6 +11,7 @@ public interface AccountRepository {
 	void delete(Integer id);
 	Account findById (Integer id);
 	Account findByClientId(Integer id);
+	boolean existsAccountNumber(Integer accountnumber);
 	List<Account> findAll();
 
 }

@@ -11,6 +11,7 @@ public interface ClientRepository {
 	void delete(Integer id);
 	Client findById (Integer id);
 	Client findByCpf(String cpf);
+	Client findByEmail(String email);
 	List<Client> findAll();
 	
 }

@@ -56,8 +56,6 @@ public class AccountDaoJDBC implements AccountRepository {
 				throw new DatabaseException("Nenhuma linha foi inserida");
 			}
 
-			System.out.println("Conta Inserida no banco com Sucesso");
-
 		} catch (SQLException e) {
 			throw new DatabaseException("Erro ao inserir uma Conta: " + e.getMessage());
 		}
@@ -120,7 +118,8 @@ public class AccountDaoJDBC implements AccountRepository {
 				if (rs.next()) {
 					return instantiateAccount(rs);
 				} else {
-					throw new DatabaseException("Conta do Cliente com o ID: " + id + " não foi encontrado no Banco de Dados!!");
+					throw new DatabaseException(
+							"Conta do Cliente com o ID: " + id + " não foi encontrado no Banco de Dados!!");
 				}
 			}
 
@@ -145,6 +144,25 @@ public class AccountDaoJDBC implements AccountRepository {
 			throw new DatabaseException(e.getMessage());
 		}
 		return list;
+	}
+
+	@Override
+	public boolean existsAccountNumber(Integer accountnumber) {
+		String sql = "SELECT COUNT(*) FROM tb_account WHERE account_number = ?";
+
+		try (PreparedStatement st = conn.prepareStatement(sql)) {
+			st.setInt(1, accountnumber);
+
+			try (ResultSet rs = st.executeQuery()) {
+				if (rs.next()) {
+					return rs.getInt(1) > 0;
+				}
+			}
+
+		} catch (SQLException e) {
+			throw new DatabaseException("Erro ao Verificar o Numero da Conta: " + e.getMessage());
+		}
+		return false;
 	}
 
 }

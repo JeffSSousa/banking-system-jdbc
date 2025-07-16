@@ -37,5 +37,5 @@ git clone https://github.com/JeffSSousa/banking-system-jdbc.git
 
 ## 🙋 Sobre o Autor
 
-Desenvolvido por {{SEU_NOME}}  
+Desenvolvido por Jefferson Sousa  
 [GitHub](https://github.com/JeffSSousa) | [LinkedIn](https://www.linkedin.com/in/jefferson-sousa-8b93a81a2/)

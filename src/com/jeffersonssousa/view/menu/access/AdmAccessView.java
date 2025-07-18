@@ -2,6 +2,7 @@ package com.jeffersonssousa.view.menu.access;
 
 import java.util.Scanner;
 
+import com.jeffersonssousa.view.menu.access.adm.AdmLoginView;
 import com.jeffersonssousa.view.util.Screen;
 
 public class AdmAccessView {
@@ -31,7 +32,7 @@ public class AdmAccessView {
 
 			switch (option) {
 			case 1:
-				System.out.println("AdmLoginView");
+				AdmLoginView.startNavigation(sc);
 				option = 3;
 				break;
 			case 2:

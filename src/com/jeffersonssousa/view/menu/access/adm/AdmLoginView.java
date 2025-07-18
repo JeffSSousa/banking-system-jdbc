@@ -2,11 +2,9 @@ package com.jeffersonssousa.view.menu.access.adm;
 
 import java.util.Scanner;
 
-import com.jeffersonssousa.controller.ClientController;
 import com.jeffersonssousa.controller.LoginController;
-import com.jeffersonssousa.model.entities.Account;
-import com.jeffersonssousa.model.entities.Client;
-import com.jeffersonssousa.view.menu.ClientMenuView;
+import com.jeffersonssousa.model.entities.Employee;
+import com.jeffersonssousa.view.menu.AdministratorMenuView;
 import com.jeffersonssousa.view.util.Screen;
 
 public class AdmLoginView {
@@ -14,7 +12,6 @@ public class AdmLoginView {
 
 	public static void startNavigation(Scanner sc) {
         LoginController loginController = new LoginController();
-        ClientController clientController = new ClientController();
         int option = 0;
         
         sc.nextLine();
@@ -33,19 +30,18 @@ public class AdmLoginView {
                 
 
                 System.out.print("Senha: ");
-                String senha = sc.nextLine().trim();
+                String password = sc.nextLine().trim();
 
-                Account account = loginController.validateAccount(cpf, senha); // employee
+                Employee employee = loginController.validateEmployee(cpf, password);
                 
 
                 System.out.println("\n✅ Login bem-sucedido!");
                 System.out.println();
 
-                if (account.getPassword().equals(senha)) { // employee
-                Client client =  clientController.viewCustomerDataByCpf(cpf);
+                if (employee.getPassword().equals(password)) {
                 option = 1;
                 Screen.clearScreen();
-                ClientMenuView.startNavigation(sc, account, client);
+                AdministratorMenuView.startNavigation(sc, employee);
                 }
                 
             } catch (Exception e) {
@@ -54,6 +50,8 @@ public class AdmLoginView {
                 System.out.println("Tente novamente...");
                 Screen.timeSleep(3000);
             }
+            
+            
             
             
         } while (option != 1);

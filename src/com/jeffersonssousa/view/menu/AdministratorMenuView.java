@@ -2,6 +2,7 @@ package com.jeffersonssousa.view.menu;
 
 import java.util.Scanner;
 
+import com.jeffersonssousa.model.entities.Employee;
 import com.jeffersonssousa.view.menu.adm.DeleteAccessView;
 import com.jeffersonssousa.view.menu.adm.FindAccessView;
 import com.jeffersonssousa.view.menu.adm.ListAccountsView;
@@ -24,7 +25,7 @@ public class AdministratorMenuView {
 		return sc.nextInt();
 	}
 
-	public static void startNavigation(Scanner sc) {
+	public static void startNavigation(Scanner sc, Employee employee) {
 		int option = 0;
 
 		do {

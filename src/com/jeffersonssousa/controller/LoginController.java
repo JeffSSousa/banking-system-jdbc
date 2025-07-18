@@ -7,9 +7,12 @@ public class LoginController {
 	private final AuthService service = new AuthService();
 
 
-	public Account validate(String cpf, String password) {
-		Account account = service.login(cpf, password);
+	public Account validateAccount(String cpf, String password) {
+		Account account = service.loginAccount(cpf, password);
 		
 		return account;
-	}		
+	}	
+	
+	
+	// validate employee
 }

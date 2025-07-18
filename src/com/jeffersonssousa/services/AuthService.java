@@ -7,7 +7,7 @@ import com.jeffersonssousa.repository.DaoFactory;
 
 public class AuthService {
 
-	public Account login(String cpf, String password) {
+	public Account loginAccount(String cpf, String password) {
 		Client client = DaoFactory.createClientDao().findByCpf(cpf);
 	    if (client == null) {
 	        throw new DatabaseException("Cliente do CPF " + cpf + " não foi encontrado no Banco de Dados!!");

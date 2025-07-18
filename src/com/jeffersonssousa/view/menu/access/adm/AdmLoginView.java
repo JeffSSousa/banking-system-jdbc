@@ -24,7 +24,7 @@ public class AdmLoginView {
             try {
                 Screen.clearScreen();
                 
-                System.out.println("====== LOGIN DO CLIENTE ======");
+                System.out.println("====== LOGIN DO COLABORADOR ======");
                 System.out.println();
                
                 
@@ -35,13 +35,13 @@ public class AdmLoginView {
                 System.out.print("Senha: ");
                 String senha = sc.nextLine().trim();
 
-                Account account = loginController.validate(cpf, senha);
+                Account account = loginController.validateAccount(cpf, senha); // employee
                 
 
                 System.out.println("\n✅ Login bem-sucedido!");
                 System.out.println();
 
-                if (account.getPassword().equals(senha)) {
+                if (account.getPassword().equals(senha)) { // employee
                 Client client =  clientController.viewCustomerDataByCpf(cpf);
                 option = 1;
                 Screen.clearScreen();

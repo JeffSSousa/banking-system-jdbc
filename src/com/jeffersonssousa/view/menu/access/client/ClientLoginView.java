@@ -34,7 +34,7 @@ public class ClientLoginView {
                 System.out.print("Senha: ");
                 String senha = sc.nextLine().trim();
 
-                Account account = loginController.validate(cpf, senha);
+                Account account = loginController.validateAccount(cpf, senha);
                 
 
                 System.out.println("\n✅ Login bem-sucedido!");

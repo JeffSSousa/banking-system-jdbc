@@ -109,6 +109,13 @@ public class Employee {
 		Employee other = (Employee) obj;
 		return Objects.equals(Id, other.Id);
 	}
+
+	@Override
+	public String toString() {
+		return "Employee [Id=" + Id + ", firstName=" + firstName + ", lastName=" + lastName + ", cpf=" + cpf
+				+ ", birthDate=" + birthDate + ", password=" + password + ", jobTitle=" + jobTitle + ", corporateEmail="
+				+ corporateEmail + "]";
+	}
 	
 
 	

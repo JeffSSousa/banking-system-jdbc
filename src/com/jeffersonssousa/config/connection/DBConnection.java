@@ -60,13 +60,29 @@ public class DBConnection {
 	}
 
 	private static Properties loadProperties() {
-		try (FileInputStream file = new FileInputStream("db.properties")) {
-			Properties props = new Properties();
-			props.load(file);
-			return props;
-		} catch (IOException e) {
-			throw new NotFoundPropertiesException(e.getMessage());
-		}
+	    try (FileInputStream file = new FileInputStream("db.properties")) {
+	        Properties props = new Properties();
+	        props.load(file);
+
+	        Properties resolvedProps = new Properties();
+
+	        for (String key : props.stringPropertyNames()) {
+	            String value = props.getProperty(key);
+	            if (value != null && value.matches("\\$\\{.+}")) {
+	                String envVar = value.substring(2, value.length() - 1);
+	                String envValue = System.getenv(envVar);
+	                if (envValue == null) {
+	                    throw new NotFoundPropertiesException("Variável de ambiente '" + envVar + "' não definida");
+	                }
+	                resolvedProps.setProperty(key, envValue);
+	            } else {
+	                resolvedProps.setProperty(key, value);
+	            }
+	        }
+	        return resolvedProps;
+	    } catch (IOException e) {
+	        throw new NotFoundPropertiesException(e.getMessage());
+	    }
 	}
 
 }

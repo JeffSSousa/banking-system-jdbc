@@ -16,6 +16,12 @@ public class AccountService {
 		Account obj = DaoFactory.createAccountDao().findByClientId(id);
 		return obj;
 	}
+	
+	public Account findAccountDataByAccountNumber(Integer accountNumber) {
+		Account obj = DaoFactory.createAccountDao().findByAccountNumber(accountNumber);
+		return obj;
+	}
+
 
 	public int generateUniqueAccountNumber() {
 		int accountNumber;
@@ -33,5 +39,10 @@ public class AccountService {
 		Random random = new Random();
 		return 10000 + random.nextInt(90000);
 	}
+	
+	public boolean existsAccountNumber(Integer number) {
+		return DaoFactory.createAccountDao().existsAccountNumber(number);
+	}
+
 
 }

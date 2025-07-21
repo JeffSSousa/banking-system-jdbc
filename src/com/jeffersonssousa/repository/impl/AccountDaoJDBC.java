@@ -127,6 +127,27 @@ public class AccountDaoJDBC implements AccountRepository {
 			throw new DatabaseException("Erro ao procurar cliente por id: " + e.getMessage());
 		}
 	}
+	
+
+	@Override
+	public Account findByAccountNumber(Integer accountNumber) {
+		String sql = "SELECT * FROM system_bank.tb_account" + " WHERE  account_number = ?";
+
+		try (PreparedStatement st = conn.prepareStatement(sql)) {
+			st.setInt(1, accountNumber);
+
+			try (ResultSet rs = st.executeQuery()) {
+				if (rs.next()) {
+					return instantiateAccount(rs);
+				} else {
+					return null;
+				}
+			}
+
+		} catch (SQLException e) {
+			throw new DatabaseException("Erro ao procurar cliente por id: " + e.getMessage());
+		}
+	}
 
 	@Override
 	public List<Account> findAll() {
@@ -164,5 +185,6 @@ public class AccountDaoJDBC implements AccountRepository {
 		}
 		return false;
 	}
+
 
 }

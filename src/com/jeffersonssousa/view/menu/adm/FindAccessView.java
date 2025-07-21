@@ -2,10 +2,15 @@ package com.jeffersonssousa.view.menu.adm;
 
 import java.util.Scanner;
 
+import com.jeffersonssousa.view.menu.adm.subviews.FindAccountByAccountNumber;
+import com.jeffersonssousa.view.menu.adm.subviews.FindAccountByCpfClient;
+import com.jeffersonssousa.view.menu.adm.subviews.FindClientByCpf;
+import com.jeffersonssousa.view.menu.adm.subviews.FindClientByEmail;
+import com.jeffersonssousa.view.menu.adm.subviews.FindClientsByName;
 import com.jeffersonssousa.view.util.Screen;
 
 public class FindAccessView {
-	
+
 	public static int showAccessView(Scanner sc) {
 
 		System.out.println("=========================================");
@@ -16,14 +21,13 @@ public class FindAccessView {
 		System.out.println("3. Buscar Cliente por email: ");
 		System.out.println("4. Buscar Conta por numero da conta: ");
 		System.out.println("5. Buscar Conta por cpf do cliente: ");
-		
+
 		System.out.println();
 		Screen.showReturnToMenu(6);
 
 		return sc.nextInt();
 	}
-	
-	
+
 	public static void startNavigation(Scanner sc) {
 		int option = 0;
 
@@ -35,22 +39,22 @@ public class FindAccessView {
 
 			switch (option) {
 			case 1:
-				System.out.println("Encontrado");  // criar class view 
+				FindClientsByName.startNavigation(sc);
 				break;
 			case 2:
-				System.out.println("Encontrado"); // criar class view 
+				FindClientByCpf.startNavigation(sc);
 				break;
 			case 3:
-				System.out.println("Encontrado"); // criar class view 
+				FindClientByEmail.startNavigation(sc);
 				break;
 			case 4:
-				System.out.println("Encontrado"); // criar class view 
+				FindAccountByAccountNumber.startNavigation(sc);
 				break;
 			case 5:
-				System.out.println("Encontrado"); // criar class view 
+				FindAccountByCpfClient.startNavigation(sc);
 				break;
 			case 6:
-				System.out.println("Encontrado"); // criar class view 
+				option = 6;
 				break;
 			}
 

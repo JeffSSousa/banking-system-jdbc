@@ -13,5 +13,6 @@ public interface AccountRepository {
 	Account findByClientId(Integer id);
 	boolean existsAccountNumber(Integer accountnumber);
 	List<Account> findAll();
+	Account findByAccountNumber(Integer accountNumber);
 
 }

@@ -16,6 +16,11 @@ public class ClientService {
 		Client obj = DaoFactory.createClientDao().findByCpf(cpf);
 		return obj;
 	}
+	
+	public Client findClientDataByEmail(String email) {
+		Client obj = DaoFactory.createClientDao().findByEmail(email);
+		return obj;
+	}
 
 	public List<Client> findAllCLients() {
 		return DaoFactory.createClientDao().findAll();
@@ -30,4 +35,6 @@ public class ClientService {
 		Client client = DaoFactory.createClientDao().findByEmail(email);
 		return client != null;
 	}
+
+
 }

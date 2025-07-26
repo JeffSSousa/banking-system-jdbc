@@ -80,8 +80,6 @@ public class AccountDaoJDBC implements AccountRepository {
 						"Nenhuma Conta com o ID: " + id + " foi encontrado para ser deletado do banco de dados");
 			}
 
-			System.out.println("Conta deletado com sucesso");
-
 		} catch (SQLException e) {
 			throw new DatabaseException("Erro ao deletar uma Conta do banco de dados: " + e.getMessage());
 		}

@@ -1,6 +1,7 @@
 package com.jeffersonssousa.controller;
 
 import java.util.List;
+import java.util.Scanner;
 
 import com.jeffersonssousa.model.entities.Account;
 import com.jeffersonssousa.model.entities.Client;
@@ -64,13 +65,48 @@ public class AdmController {
 	}
 
 	public void showAccountByClientCpf(String cpf) {
-		if(clientService.existsCPF(cpf)) {
-		Client client = clientService.findClientDataByCpf(cpf);
-		Account account = accountService.findAccountDataByClientID(client.getId());
-		showAccount(account, client);
-		}else {
+		if (clientService.existsCPF(cpf)) {
+			Client client = clientService.findClientDataByCpf(cpf);
+			Account account = accountService.findAccountDataByClientID(client.getId());
+			showAccount(account, client);
+		} else {
 			System.out.println("Esse CPF não está Cadastrado!!");
 			System.out.println();
+		}
+	}
+
+	public void showDeleteClient(String cpf, Scanner sc) {
+		Client client = null;
+		Account account = null;
+
+		Screen.clearScreen();
+
+		if (clientService.existsCPF(cpf)) {
+			System.out.println("======== Cliente encontrado no Banco ===========");
+			System.out.println();
+			client = clientService.findClientDataByCpf(cpf);
+			account = accountService.findAccountDataByClientID(client.getId());
+			showAccount(account, client);
+
+			System.out.println("Tem certeza ?");
+			System.out.println("1. Sim");
+			System.out.println("2. Não");
+			System.out.print("informe a opção desejada: ");
+			int resp = sc.nextInt();
+
+			if (resp == 1) {
+				Screen.clearScreen();
+				accountService.deleteAccountAndClientData(client, account);
+				Screen.timeSleep(3000);
+			} else {
+				Screen.clearScreen();
+				System.out.println("Operação Cancelada");
+				Screen.timeSleep(1500);
+			}
+
+		} else {
+			System.out.println("Esse CPF não foi encontrado no Banco");
+			Screen.timeSleep(1500);
 		}
 	}
 

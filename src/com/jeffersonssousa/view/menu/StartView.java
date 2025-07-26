@@ -27,7 +27,6 @@ public class StartView {
 		int option = 0;
 
 		do {
-			Screen.clearScreen();
 			Screen.notifyInvalidOption(3, option);
 
 			option = showHomeMenu(sc);

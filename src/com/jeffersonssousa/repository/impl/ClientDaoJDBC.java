@@ -102,8 +102,6 @@ public class ClientDaoJDBC implements ClientRepository {
 						"Nenhum cliente com o ID: " + id + " foi encontrado para ser deletado do banco de dados");
 			}
 
-			System.out.println("Cliente deletado com sucesso");
-
 		} catch (SQLException e) {
 			throw new DatabaseException("Erro ao deletar um cliente do banco de dados: " + e.getMessage());
 		}

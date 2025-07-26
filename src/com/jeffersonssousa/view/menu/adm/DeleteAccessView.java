@@ -2,6 +2,7 @@ package com.jeffersonssousa.view.menu.adm;
 
 import java.util.Scanner;
 
+import com.jeffersonssousa.controller.AdmController;
 import com.jeffersonssousa.view.util.Screen;
 
 public class DeleteAccessView {
@@ -11,10 +12,10 @@ public class DeleteAccessView {
 		System.out.println("=========================================");
 		System.out.println("       MENU DE EXCLUSÃO DE REGISTROS     ");
 		System.out.println("=========================================");
-		System.out.println("1. Encerrar Conta Bancária (por número da conta)");
-		System.out.println("2. Excluir Cliente e Contas Bancarias vinculadas(por CPF)");
-		
-		Screen.showReturnToMenu(3);
+
+		System.out.println("1. Continuar com a Exclusão.");
+
+		Screen.showReturnToMenu(2);
 
 		return sc.nextInt();
 	}
@@ -22,26 +23,62 @@ public class DeleteAccessView {
 	public static void startNavigation(Scanner sc) {
 		int option = 0;
 
+		Screen.clearScreen();
+		Screen.notifyInvalidOption(2, option);
+
+		option = showDeleteMenu(sc);
+
 		do {
-			Screen.clearScreen();
-			Screen.notifyInvalidOption(3, option);
-
-			option = showDeleteMenu(sc);
-
 			switch (option) {
 			case 1:
-				System.out.println("Conta Excluida");  // criar class view com validação
+				option = startDelete(option, sc);
 				break;
 			case 2:
-				System.out.println("Cliente Excluido"); // criar class view com validação
-				break;
-			case 3:
-				System.out.println("Cliente Excluido"); // criar class view com validação
+				Screen.clearScreen();
+				Screen.showReturningToMenu();
+				Screen.timeSleep(1000);
 				break;
 			}
-
-		} while (option != 3);
+		} while (option != 2);
 	}
 
-	
+	private static int startDelete(Integer option, Scanner sc) {
+		AdmController admController = new AdmController();
+
+		boolean validate = false;
+
+		sc.nextLine();
+
+		do {
+			Screen.clearScreen();
+
+			System.out.print("Digite o CPF do Cliente que deseja encerrar seu vinculo com o banco: ");
+			String cpf = sc.nextLine();
+
+			do {
+				System.out.println("Deseja Continuar com o Encerramento dessa conta ?");
+				System.out.print("Digite Sim ou Não: ");
+				String resp = sc.nextLine();
+
+				if (resp.equalsIgnoreCase("Sim")) {
+					option = 2;
+					admController.showDeleteClient(cpf, sc);
+					validate = true;
+
+				} else if (resp.equalsIgnoreCase("não") || resp.equalsIgnoreCase("nao")) {
+					option = 2;
+					validate = true;
+					Screen.showReturningToMenu();
+				} else {
+					Screen.clearScreen();
+					System.out.println("Resposta erra tente novamente!!");
+					Screen.timeSleep(1000);
+				}
+			} while (validate != true);
+
+		} while (option != 2);
+
+		return option;
+	}
+
 }
